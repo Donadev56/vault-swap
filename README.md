@@ -11,7 +11,7 @@ VaultSwap is a powerful, non-custodial DEX aggregator powered by the [LiFi proto
 OVERVIEW
 ---
 
-![VSWAP EXAMPLE](https://vswap.io/images/v-example.gif)
+![VaultSwap Example](https://raw.githubusercontent.com/Donadev56/vault-swap/main/public/images/v-example.gif)
 
 ---
 
