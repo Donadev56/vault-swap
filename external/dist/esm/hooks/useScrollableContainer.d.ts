@@ -1,0 +1,5 @@
+export declare const useGetScrollableContainer: () => () => HTMLElement | null;
+export declare const useScrollableContainer: (
+  elementId: string,
+) => HTMLElement | null;
+export declare const useScrollableOverflowHidden: () => void;

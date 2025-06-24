@@ -1,0 +1,6 @@
+export declare const WalletMenuContainer: import("@emotion/styled").StyledComponent<
+  import("@mui/material").MenuProps &
+    import("@mui/system").MUIStyledCommonProps<import("@mui/material").Theme>,
+  {},
+  {}
+>;
