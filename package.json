@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "format": "pnpm exec prettier . --write",
-    "f": "pnpm format"
+    "f": "pnpm format",
+    "p": "git status && git add . && git commit -m 'update' && git push"
+
   },
   "dependencies": {
     "@bigmi/client": "^0.3.1",
@@ -37,6 +39,7 @@
     "class-variance-authority": "^0.7.1",
     "client": "link:@mysten/sui/client",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.19.2",
     "i18next": "^25.2.1",
     "icons-material": "link:@mui/icons-material",
     "lowdb": "^7.0.1",
@@ -46,6 +49,7 @@
     "motion": "^12.19.1",
     "next": "15.3.4",
     "next-themes": "^0.4.6",
+    "numeral": "^2.0.6",
     "openai": "^5.7.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -70,6 +74,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/numeral": "^2.0.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-input-autosize": "^2.2.4",

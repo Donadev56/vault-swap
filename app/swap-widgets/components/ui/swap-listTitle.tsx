@@ -19,6 +19,7 @@ export const SwapListTitle = ({ ...props }: ListTitleType) => {
         maxWidth: "100%",
         overflow: "hidden",
         textOverflow: "ellipsis",
+        display: "flex",
       }}
       actionsStyle={{
         maxWidth: "20%",

@@ -30,7 +30,7 @@ export const CryptoAvatar = ({
       }}
       className={cn(
         "flex rounded-full justify-center items-center font-bold text-muted-foreground  relative ",
-        useSkeletonToken && "bg-[var(--second-color)]",
+        (useSkeletonToken || !isUrlAvailable) && "bg-[var(--second-color)]",
       )}
     >
       {useSkeletonToken || isUrlAvailable ? "" : (token?.name[0] ?? "U")}
