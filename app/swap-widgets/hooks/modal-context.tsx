@@ -1,12 +1,6 @@
 "use client";
 import ModalBottomSheet, { ModalSheetType } from "@/components/ui/swap-modal";
-import React, {
-  createContext,
-  useContext,
-  useState,
-  ReactNode,
-  CSSProperties,
-} from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 import ReactDOM from "react-dom";
 
 type ModalContentProps = Omit<ModalSheetType, "open">;
@@ -36,8 +30,13 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   const showModal = (content: ModalContentProps) => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
     setModalContent(content);
-    setIsOpen(true);
+    setTimeout(() => {
+      setIsOpen(true);
+    }, 50);
   };
 
   const hideModal = () => {

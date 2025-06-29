@@ -1,4 +1,6 @@
 import numeral from "numeral";
+import chainData from "../../../lib/chains.json";
+import { Token } from "@lifi/sdk";
 
 export class NumberFormatterUtils {
   static formatPriceUsd(value: number): string {
@@ -6,5 +8,16 @@ export class NumberFormatterUtils {
     if (value > 0.01) return numeral(value).format("0.[000000]");
     if (value > 0.0001) return numeral(value).format("0.[00000000]");
     return numeral(value).format("0,0.00"); // fallback
+  }
+}
+
+export function explore(token: Token, chainId: number) {
+  const chain = chainData.find((e) => e.result.data.chain.chainId === chainId);
+  if (chain) {
+    if (typeof window != "undefined") {
+      window.open(
+        `${chain.result.data.chain.explorers[0].url}/address/${token.address}`,
+      );
+    }
   }
 }

@@ -18,7 +18,7 @@ export const CryptoAvatar = ({
   useSkeletonChain?: boolean;
   useSkeletonToken?: boolean;
 }) => {
-  const isUrlAvailable = !!token?.logoURI;
+  const isUrlAvailable = !!token?.logoURI || !!logoUri;
   const divider = 2;
   return (
     <div

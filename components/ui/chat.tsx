@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { AnimatePresence, motion } from "motion/react";
 import { IconMaximize } from "@tabler/icons-react";
-import ScrollArea from "./scroll-area";
+import ScrollArea from "./scroll-area-own";
 import styled from "styled-components";
 import MessageElement from "./chat-message";
 import { useCustomLifiConfig } from "@/hooks/useCustomLifiConfig";

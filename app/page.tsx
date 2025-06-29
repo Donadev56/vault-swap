@@ -15,9 +15,14 @@ import {
 import { useCustomLifiConfig } from "@/hooks/useCustomLifiConfig";
 import { Sparkles } from "lucide-react";
 import React from "react";
-
 import { RpcUrls } from "@/lib/utils";
 import { createConfig } from "@lifi/sdk";
+import { IconButton } from "./swap-widgets/components/ui/buttons";
+import { AnimatePresence, motion } from "framer-motion";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import LockIcon from "@mui/icons-material/Lock";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = React.useState(false);
   const buttonSendRef = React.useRef<HTMLButtonElement | null>(null);
@@ -25,6 +30,7 @@ export default function Home() {
   const [inputText, setInputText] = React.useState("");
   const [mounted, setMounted] = React.useState(false);
   const config = useCustomLifiConfig();
+  const [canScroll, setCanScroll] = React.useState(false);
 
   const toggleIsOpen = () => {
     setIsChatOpen(!isChatOpen);
@@ -47,9 +53,7 @@ export default function Home() {
   return (
     <main className="">
       <Header setChatOpen={setIsChatOpen} />
-
       <MainWidget />
-      <SwapDataView />
       <FloatingButtonContainer>
         <FloatingButton
           className="active:scale-95 transition-all border  cursor-pointer"
@@ -68,8 +72,30 @@ export default function Home() {
         buttonSendRef={buttonSendRef as any}
         textInputRef={textInputRef as any}
       />
-      <FAQsThree />
-      <FooterSection />
+
+      <div className="flex w-full justify-center items-center mt-[-20px] ">
+        <IconButton
+          onClick={() => setCanScroll(!canScroll)}
+          className="border border-dashed"
+          size={50 as any}
+          style={{
+            backgroundColor: config.themeColor,
+            borderRadius: 50,
+            border: "1px dashed var(--background)",
+            color: "var(--background)",
+          }}
+        >
+          {!canScroll ? <LockIcon /> : <LockOpenIcon />}
+        </IconButton>
+      </div>
+      {canScroll && (
+        <>
+          <SwapDataView />
+
+          <FAQsThree />
+          <FooterSection />
+        </>
+      )}
     </main>
   );
 }

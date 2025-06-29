@@ -3,7 +3,13 @@ import { IconButton } from "./buttons";
 import { NavigateBack } from "../../routes/routes-utils";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-export const StHeader = ({ title }: { title: React.ReactNode }) => {
+export const StHeader = ({
+  title,
+  onBack,
+}: {
+  title: React.ReactNode;
+  onBack?: () => void;
+}) => {
   return (
     <StAppBar
       fixed={false}
@@ -11,7 +17,7 @@ export const StHeader = ({ title }: { title: React.ReactNode }) => {
       mainElementStyle={{ padding: 0 }}
       className="border-none p-0"
       leading={
-        <IconButton onClick={() => NavigateBack()}>
+        <IconButton onClick={() => (onBack ? onBack() : NavigateBack())}>
           <ArrowBackIosNewIcon style={{ width: 20 }} />
         </IconButton>
       }

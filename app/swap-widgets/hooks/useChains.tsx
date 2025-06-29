@@ -20,7 +20,11 @@ const ChainsContext = createContext<ChainsContextType | undefined>(undefined);
 export const ChainsProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [chains, setChains] = useState<ExtendedChain[]>([]);
+  const [chains, setChains] = useState<ExtendedChain[]>(() => {
+    if (typeof localStorage != "undefined") {
+      return JSON.parse(localStorage.getItem("chainList") || "[]");
+    }
+  });
 
   useEffect(() => {
     init();
@@ -29,7 +33,18 @@ export const ChainsProvider: React.FC<{ children: ReactNode }> = ({
   const init = async () => {
     const result = await fetchChains();
     if (result.length > 0) {
-      setChains(result);
+      if (chains.length == 0) {
+        setChains(result);
+      } else {
+        const currentChains = [...chains];
+        const currentIds = currentChains.map((e) => e.id);
+        for (const eachChain of result) {
+          if (!currentIds.includes(eachChain.id)) {
+            currentChains.push(eachChain);
+          }
+        }
+        setChains(currentChains);
+      }
     }
   };
 
