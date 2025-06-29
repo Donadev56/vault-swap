@@ -4,16 +4,18 @@ export const Logo = ({
   style,
   className,
   color,
+  size = 30,
 }: {
   style?: React.CSSProperties;
   className?: string;
   color?: string;
+  size?: number;
 }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="30"
-      height="30"
+      width={size}
+      height={size}
       version="1.2"
       viewBox="0 0 375 375"
       style={style}

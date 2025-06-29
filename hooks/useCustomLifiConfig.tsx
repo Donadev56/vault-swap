@@ -22,14 +22,12 @@ export const CustomConfigProvider = ({
   children: React.ReactNode;
 }) => {
   const preferedColorKey = "preferedColorTheme";
-  const [preferedColor, setPreferedColor] = React.useState(
-    () => {
-      if (typeof localStorage !="undefined") {
-        return localStorage.getItem(preferedColorKey) ?? "#5C67FF"
-      }
-      return "#5C67FF"
+  const [preferedColor, setPreferedColor] = React.useState(() => {
+    if (typeof localStorage != "undefined") {
+      return localStorage.getItem(preferedColorKey) ?? "#5C67FF";
     }
-  );
+    return "#5C67FF";
+  });
 
   const LifiConfig = React.useMemo(() => {
     return {

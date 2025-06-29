@@ -1,7 +1,6 @@
 "use client";
 
 import { GetSavedTransactions } from "@/app/server-actions/transaction-history";
-import { RouteExtended, Token } from "@/external/dist/esm";
 import React from "react";
 import ListTitle from "./ui/listTitle";
 import { useCustomLifiConfig } from "@/hooks/useCustomLifiConfig";
@@ -153,7 +152,6 @@ export const SwapDataView = () => {
                     ]}
                   />
                   <div
-              
                     className={
                       "bg-[var(--second-color)] ml-7 h-8 my-1 rounded-3xl w-1 "
                     }
@@ -188,49 +186,51 @@ export const SwapDataView = () => {
           </div>
         </div>
 
-     { false &&   <div
-          className={cn(
-            "flex flex-col  w-full gap-2",
-            !isMobile && "max-w-[100%]",
-          )}
-        >
-          <div className="font-bold flex items-center  gap-2 m-2 text-[20px] opacity-70">
-            Chains <TbBrandTorchain />
-          </div>
-          <div>
-            <SearchInput
-              value={chainQuery}
-              placeholder="Search Chain"
-              onChange={setChainQuery}
-            />
-          </div>
-
+        {false && (
           <div
             className={cn(
-              "max-h-[400px]  overflow-scroll gap-2 border border-dashed rounded-2xl flex w-full flex-col",
+              "flex flex-col  w-full gap-2",
+              !isMobile && "max-w-[100%]",
             )}
           >
-            {filteredChains.map((e) => {
-              return (
-                <div>
-                  <ListTitle
-                    className="hover:opacity-70 cursor-pointer transition-all"
-                    onClick={() => openChainList(e.id as any)}
-                    leading={
-                      <CryptoPicture
-                        size={40}
-                        token={e.nativeToken as any}
-                        logoUri={e.logoURI}
-                      />
-                    }
-                    title={<div>{e.nativeToken.name}</div>}
-                    subTitle={<div>{e.nativeToken.priceUSD}</div>}
-                  />
-                </div>
-              );
-            })}
+            <div className="font-bold flex items-center  gap-2 m-2 text-[20px] opacity-70">
+              Chains <TbBrandTorchain />
+            </div>
+            <div>
+              <SearchInput
+                value={chainQuery}
+                placeholder="Search Chain"
+                onChange={setChainQuery}
+              />
+            </div>
+
+            <div
+              className={cn(
+                "max-h-[400px]  overflow-scroll gap-2 border border-dashed rounded-2xl flex w-full flex-col",
+              )}
+            >
+              {filteredChains.map((e) => {
+                return (
+                  <div>
+                    <ListTitle
+                      className="hover:opacity-70 cursor-pointer transition-all"
+                      onClick={() => openChainList(e.id as any)}
+                      leading={
+                        <CryptoPicture
+                          size={40}
+                          token={e.nativeToken as any}
+                          logoUri={e.logoURI}
+                        />
+                      }
+                      title={<div>{e.nativeToken.name}</div>}
+                      subTitle={<div>{e.nativeToken.priceUSD}</div>}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>}
+        )}
       </div>
     </div>
   );
@@ -263,13 +263,14 @@ export const SearchInput = ({
     </div>
   );
 };
+
 export const CryptoPicture = ({
   size,
   token,
   chain,
   logoUri,
 }: {
-  token: Token;
+  token: any;
   size: number;
   chain?: Chain;
   logoUri?: string;

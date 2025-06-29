@@ -1,0 +1,2916 @@
+[
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/1/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "3082f1a3-5e94-56fa-83b0-e69ff7557fbd",
+          "name": "Ethereum Mainnet",
+          "chain": "ETH",
+          "chainId": 1,
+          "rpc": [
+            "https://mainnet.infura.io/v3/${INFURA_API_KEY}",
+            "https://api.mycryptoapi.com/eth",
+            "https://cloudflare-eth.com",
+            "https://ethereum-rpc.publicnode.com",
+            "https://mainnet.gateway.tenderly.co",
+            "https://rpc.blocknative.com/boost",
+            "https://rpc.flashbots.net",
+            "https://rpc.flashbots.net/fast",
+            "https://rpc.mevblocker.io",
+            "https://rpc.mevblocker.io/fast",
+            "https://rpc.mevblocker.io/noreverts",
+            "https://rpc.mevblocker.io/fullprivacy",
+            "https://eth.drpc.org",
+            "https://api.securerpc.com/v1"
+          ],
+          "icon": {
+            "publicURL": "/static/0617583cb3eb7a14f3a09893d5b1f895/ethereum.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/0617583cb3eb7a14f3a09893d5b1f895/aa1cf/ethereum.png",
+                    "srcSet": "/static/0617583cb3eb7a14f3a09893d5b1f895/f1396/ethereum.png 15w,\n/static/0617583cb3eb7a14f3a09893d5b1f895/be513/ethereum.png 30w,\n/static/0617583cb3eb7a14f3a09893d5b1f895/aa1cf/ethereum.png 60w,\n/static/0617583cb3eb7a14f3a09893d5b1f895/14fd8/ethereum.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/0617583cb3eb7a14f3a09893d5b1f895/7c9ec/ethereum.webp 15w,\n/static/0617583cb3eb7a14f3a09893d5b1f895/76b36/ethereum.webp 30w,\n/static/0617583cb3eb7a14f3a09893d5b1f895/1a2ad/ethereum.webp 60w,\n/static/0617583cb3eb7a14f3a09893d5b1f895/b96f6/ethereum.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 98
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://etherscan.io",
+              "name": "etherscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://eth.blockscout.com",
+              "name": "blockscout",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://ethereum.dex.guru",
+              "name": "dexguru",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://ethereum.routescan.io",
+              "name": "Routescan",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://ethereum.org"
+        }
+      },
+      "pageContext": {
+        "id": "3082f1a3-5e94-56fa-83b0-e69ff7557fbd",
+        "chainId": 1,
+        "__params": {
+          "chainId": "1"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/10/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "8e2756c2-7bf1-5995-a9a7-9df77292c17a",
+          "name": "OP Mainnet",
+          "chain": "ETH",
+          "chainId": 10,
+          "rpc": [
+            "https://mainnet.optimism.io",
+            "https://optimism-rpc.publicnode.com",
+            "https://optimism.gateway.tenderly.co",
+            "https://optimism.drpc.org"
+          ],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://optimistic.etherscan.io",
+              "name": "etherscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://optimism.blockscout.com",
+              "name": "blockscout",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://optimism.dex.guru",
+              "name": "dexguru",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://mainnet.superscan.network",
+              "name": "Routescan",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://optimism.io"
+        }
+      },
+      "pageContext": {
+        "id": "8e2756c2-7bf1-5995-a9a7-9df77292c17a",
+        "chainId": 10,
+        "__params": {
+          "chainId": "10"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/25/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "1729d1df-f983-5084-b9d4-639a18094748",
+          "name": "Cronos Mainnet",
+          "chain": "CRO",
+          "chainId": 25,
+          "rpc": [
+            "https://evm.cronos.org",
+            "https://cronos-evm-rpc.publicnode.com",
+            "https://cronos.drpc.org"
+          ],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Cronos",
+            "symbol": "CRO"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.cronos.org",
+              "name": "Cronos Explorer",
+              "standard": "none"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://cronos.org/"
+        }
+      },
+      "pageContext": {
+        "id": "1729d1df-f983-5084-b9d4-639a18094748",
+        "chainId": 25,
+        "__params": {
+          "chainId": "25"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/30/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "e7b12c15-d972-5eae-bd80-0abc8837ae90",
+          "name": "Rootstock Mainnet",
+          "chain": "Rootstock",
+          "chainId": 30,
+          "rpc": ["https://public-node.rsk.co", "https://mycrypto.rsk.co"],
+          "icon": {
+            "publicURL": "/static/cb755722e5ced5bf0e423f70021b91d9/rootstock.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/cb755722e5ced5bf0e423f70021b91d9/35e78/rootstock.png",
+                    "srcSet": "/static/cb755722e5ced5bf0e423f70021b91d9/b13d4/rootstock.png 15w,\n/static/cb755722e5ced5bf0e423f70021b91d9/23cd5/rootstock.png 30w,\n/static/cb755722e5ced5bf0e423f70021b91d9/35e78/rootstock.png 60w,\n/static/cb755722e5ced5bf0e423f70021b91d9/63126/rootstock.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/cb755722e5ced5bf0e423f70021b91d9/256c5/rootstock.webp 15w,\n/static/cb755722e5ced5bf0e423f70021b91d9/b7656/rootstock.webp 30w,\n/static/cb755722e5ced5bf0e423f70021b91d9/db699/rootstock.webp 60w,\n/static/cb755722e5ced5bf0e423f70021b91d9/02715/rootstock.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 67
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Smart Bitcoin",
+            "symbol": "RBTC"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.rsk.co",
+              "name": "Rootstock Explorer",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://rootstock.blockscout.com",
+              "name": "blockscout",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://rootstock.io"
+        }
+      },
+      "pageContext": {
+        "id": "e7b12c15-d972-5eae-bd80-0abc8837ae90",
+        "chainId": 30,
+        "__params": {
+          "chainId": "30"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/50/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "2e41c4c9-e749-5185-9694-c183c876c4d1",
+          "name": "XDC Network",
+          "chain": "XDC",
+          "chainId": 50,
+          "rpc": [
+            "https://erpc.xinfin.network",
+            "https://rpc.xinfin.network",
+            "https://rpc1.xinfin.network",
+            "https://rpc.xdcrpc.com",
+            "https://erpc.xdcrpc.com",
+            "https://rpc.ankr.com/xdc",
+            "https://rpc.xdc.org"
+          ],
+          "icon": {
+            "publicURL": "/static/3080831d1fd21145e15d8331fd3d2717/xdc.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/3080831d1fd21145e15d8331fd3d2717/7ab40/xdc.png",
+                    "srcSet": "/static/3080831d1fd21145e15d8331fd3d2717/7961d/xdc.png 15w,\n/static/3080831d1fd21145e15d8331fd3d2717/53973/xdc.png 30w,\n/static/3080831d1fd21145e15d8331fd3d2717/7ab40/xdc.png 60w,\n/static/3080831d1fd21145e15d8331fd3d2717/a8b52/xdc.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/3080831d1fd21145e15d8331fd3d2717/f57b3/xdc.webp 15w,\n/static/3080831d1fd21145e15d8331fd3d2717/bde72/xdc.webp 30w,\n/static/3080831d1fd21145e15d8331fd3d2717/927d1/xdc.webp 60w,\n/static/3080831d1fd21145e15d8331fd3d2717/507b0/xdc.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "XinFin",
+            "symbol": "XDC"
+          },
+          "explorers": [
+            {
+              "url": "https://xdcscan.com",
+              "name": "xdcscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://xdcscan.io",
+              "name": "openscan",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://xinfin.org"
+        }
+      },
+      "pageContext": {
+        "id": "2e41c4c9-e749-5185-9694-c183c876c4d1",
+        "chainId": 50,
+        "__params": {
+          "chainId": "50"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/56/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "e33bd478-9fcf-510e-b222-f1d57467ad8a",
+          "name": "BNB Smart Chain Mainnet",
+          "chain": "BSC",
+          "chainId": 56,
+          "rpc": [
+            "https://bsc-dataseed1.bnbchain.org",
+            "https://bsc-dataseed2.bnbchain.org",
+            "https://bsc-dataseed3.bnbchain.org",
+            "https://bsc-dataseed4.bnbchain.org",
+            "https://bsc-dataseed1.defibit.io",
+            "https://bsc-dataseed2.defibit.io",
+            "https://bsc-dataseed3.defibit.io",
+            "https://bsc-dataseed4.defibit.io",
+            "https://bsc-dataseed1.ninicoin.io",
+            "https://bsc-dataseed2.ninicoin.io",
+            "https://bsc-dataseed3.ninicoin.io",
+            "https://bsc-dataseed4.ninicoin.io",
+            "https://bsc-rpc.publicnode.com"
+          ],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "BNB Chain Native Token",
+            "symbol": "BNB"
+          },
+          "explorers": [
+            {
+              "url": "https://bscscan.com",
+              "name": "bscscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://bnb.dex.guru",
+              "name": "dexguru",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://www.bnbchain.org/en"
+        }
+      },
+      "pageContext": {
+        "id": "e33bd478-9fcf-510e-b222-f1d57467ad8a",
+        "chainId": 56,
+        "__params": {
+          "chainId": "56"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/100/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "1203e242-369a-5c01-bdc1-42e93a558edc",
+          "name": "Gnosis",
+          "chain": "GNO",
+          "chainId": 100,
+          "rpc": [
+            "https://rpc.gnosischain.com",
+            "https://rpc.gnosis.gateway.fm",
+            "https://rpc.ankr.com/gnosis",
+            "https://gnosischain-rpc.gateway.pokt.network",
+            "https://gnosis-mainnet.public.blastapi.io",
+            "https://gnosis.api.onfinality.io/public",
+            "https://gnosis.blockpi.network/v1/rpc/public",
+            "https://web3endpoints.com/gnosischain-mainnet",
+            "https://gnosis.oat.farm",
+            "https://gnosis-rpc.publicnode.com"
+          ],
+          "icon": {
+            "publicURL": "/static/8e00d0ae01a6c61062306eeddb3318be/gnosis.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/8e00d0ae01a6c61062306eeddb3318be/7ab40/gnosis.png",
+                    "srcSet": "/static/8e00d0ae01a6c61062306eeddb3318be/7961d/gnosis.png 15w,\n/static/8e00d0ae01a6c61062306eeddb3318be/53973/gnosis.png 30w,\n/static/8e00d0ae01a6c61062306eeddb3318be/7ab40/gnosis.png 60w,\n/static/8e00d0ae01a6c61062306eeddb3318be/a8b52/gnosis.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/8e00d0ae01a6c61062306eeddb3318be/f57b3/gnosis.webp 15w,\n/static/8e00d0ae01a6c61062306eeddb3318be/bde72/gnosis.webp 30w,\n/static/8e00d0ae01a6c61062306eeddb3318be/927d1/gnosis.webp 60w,\n/static/8e00d0ae01a6c61062306eeddb3318be/507b0/gnosis.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "xDAI",
+            "symbol": "XDAI"
+          },
+          "explorers": [
+            {
+              "url": "https://gnosisscan.io",
+              "name": "gnosisscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://gnosis.blockscout.com",
+              "name": "blockscout",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://gnosis.dex.guru",
+              "name": "dexguru",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [
+            "https://gnosisfaucet.com",
+            "https://stakely.io/faucet/gnosis-chain-xdai",
+            "https://faucet.prussia.dev/xdai"
+          ],
+          "redFlags": null,
+          "infoURL": "https://docs.gnosischain.com"
+        }
+      },
+      "pageContext": {
+        "id": "1203e242-369a-5c01-bdc1-42e93a558edc",
+        "chainId": 100,
+        "__params": {
+          "chainId": "100"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/122/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "781af175-9b4b-5406-bfd6-de2fe0c1a287",
+          "name": "Fuse Mainnet",
+          "chain": "FUSE",
+          "chainId": 122,
+          "rpc": ["https://rpc.fuse.io", "https://fuse.drpc.org"],
+          "icon": {
+            "publicURL": "/static/d4c9b4f211e7f168f116fb1707e54e23/fuse.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/d4c9b4f211e7f168f116fb1707e54e23/7ab40/fuse.png",
+                    "srcSet": "/static/d4c9b4f211e7f168f116fb1707e54e23/7961d/fuse.png 15w,\n/static/d4c9b4f211e7f168f116fb1707e54e23/53973/fuse.png 30w,\n/static/d4c9b4f211e7f168f116fb1707e54e23/7ab40/fuse.png 60w,\n/static/d4c9b4f211e7f168f116fb1707e54e23/a8b52/fuse.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/d4c9b4f211e7f168f116fb1707e54e23/f57b3/fuse.webp 15w,\n/static/d4c9b4f211e7f168f116fb1707e54e23/bde72/fuse.webp 30w,\n/static/d4c9b4f211e7f168f116fb1707e54e23/927d1/fuse.webp 60w,\n/static/d4c9b4f211e7f168f116fb1707e54e23/507b0/fuse.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Fuse",
+            "symbol": "FUSE"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.fuse.io",
+              "name": "blockscout",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://fuse.io/"
+        }
+      },
+      "pageContext": {
+        "id": "781af175-9b4b-5406-bfd6-de2fe0c1a287",
+        "chainId": 122,
+        "__params": {
+          "chainId": "122"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/130/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "e9ae786c-dab8-51e2-90a8-1915c6c4fea6",
+          "name": "Unichain",
+          "chain": "ETH",
+          "chainId": 130,
+          "rpc": [
+            "https://mainnet.unichain.org",
+            "https://unichain-rpc.publicnode.com"
+          ],
+          "icon": {
+            "publicURL": "/static/cab4062eaf77e135a818be52405a4a8f/unichain.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/cab4062eaf77e135a818be52405a4a8f/7ab40/unichain.png",
+                    "srcSet": "/static/cab4062eaf77e135a818be52405a4a8f/7961d/unichain.png 15w,\n/static/cab4062eaf77e135a818be52405a4a8f/53973/unichain.png 30w,\n/static/cab4062eaf77e135a818be52405a4a8f/7ab40/unichain.png 60w,\n/static/cab4062eaf77e135a818be52405a4a8f/a8b52/unichain.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/cab4062eaf77e135a818be52405a4a8f/f57b3/unichain.webp 15w,\n/static/cab4062eaf77e135a818be52405a4a8f/bde72/unichain.webp 30w,\n/static/cab4062eaf77e135a818be52405a4a8f/927d1/unichain.webp 60w,\n/static/cab4062eaf77e135a818be52405a4a8f/507b0/unichain.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://uniscan.xyz",
+              "name": "Unichain Mainnet Explorer",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://unichain.blockscout.com",
+              "name": "Unichain Mainnet Explorer",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://unichain.org"
+        }
+      },
+      "pageContext": {
+        "id": "e9ae786c-dab8-51e2-90a8-1915c6c4fea6",
+        "chainId": 130,
+        "__params": {
+          "chainId": "130"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/137/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "8bff0be4-3548-5d5d-9c83-897eb77cbdd5",
+          "name": "Polygon Mainnet",
+          "chain": "Polygon",
+          "chainId": 137,
+          "rpc": [
+            "https://polygon-rpc.com/",
+            "https://rpc-mainnet.matic.network",
+            "https://matic-mainnet.chainstacklabs.com",
+            "https://rpc-mainnet.maticvigil.com",
+            "https://rpc-mainnet.matic.quiknode.pro",
+            "https://matic-mainnet-full-rpc.bwarelabs.com",
+            "https://polygon-bor-rpc.publicnode.com",
+            "https://polygon.gateway.tenderly.co",
+            "https://polygon.drpc.org"
+          ],
+          "icon": {
+            "publicURL": "/static/1ee4a1ab4dd95100e8d21e67acf53849/polygon.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/1ee4a1ab4dd95100e8d21e67acf53849/7ab40/polygon.png",
+                    "srcSet": "/static/1ee4a1ab4dd95100e8d21e67acf53849/7961d/polygon.png 15w,\n/static/1ee4a1ab4dd95100e8d21e67acf53849/53973/polygon.png 30w,\n/static/1ee4a1ab4dd95100e8d21e67acf53849/7ab40/polygon.png 60w,\n/static/1ee4a1ab4dd95100e8d21e67acf53849/a8b52/polygon.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/1ee4a1ab4dd95100e8d21e67acf53849/f57b3/polygon.webp 15w,\n/static/1ee4a1ab4dd95100e8d21e67acf53849/bde72/polygon.webp 30w,\n/static/1ee4a1ab4dd95100e8d21e67acf53849/927d1/polygon.webp 60w,\n/static/1ee4a1ab4dd95100e8d21e67acf53849/507b0/polygon.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "POL",
+            "symbol": "POL"
+          },
+          "explorers": [
+            {
+              "url": "https://polygonscan.com",
+              "name": "polygonscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://polygon.dex.guru",
+              "name": "dexguru",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://polygon.technology/"
+        }
+      },
+      "pageContext": {
+        "id": "8bff0be4-3548-5d5d-9c83-897eb77cbdd5",
+        "chainId": 137,
+        "__params": {
+          "chainId": "137"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/146/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "64aed95a-6f5a-5ed4-a8f9-3d713a823a13",
+          "name": "Sonic Mainnet",
+          "chain": "sonic",
+          "chainId": 146,
+          "rpc": [
+            "https://rpc.soniclabs.com",
+            "https://sonic-rpc.publicnode.com"
+          ],
+          "icon": {
+            "publicURL": "/static/be49b84c3e4bfda21261dc2737a33292/sonic.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/be49b84c3e4bfda21261dc2737a33292/7ab40/sonic.png",
+                    "srcSet": "/static/be49b84c3e4bfda21261dc2737a33292/7961d/sonic.png 15w,\n/static/be49b84c3e4bfda21261dc2737a33292/53973/sonic.png 30w,\n/static/be49b84c3e4bfda21261dc2737a33292/7ab40/sonic.png 60w,\n/static/be49b84c3e4bfda21261dc2737a33292/a8b52/sonic.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/be49b84c3e4bfda21261dc2737a33292/f57b3/sonic.webp 15w,\n/static/be49b84c3e4bfda21261dc2737a33292/bde72/sonic.webp 30w,\n/static/be49b84c3e4bfda21261dc2737a33292/927d1/sonic.webp 60w,\n/static/be49b84c3e4bfda21261dc2737a33292/507b0/sonic.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Sonic",
+            "symbol": "S"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.soniclabs.com",
+              "name": "sonic",
+              "standard": "none"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://soniclabs.com"
+        }
+      },
+      "pageContext": {
+        "id": "64aed95a-6f5a-5ed4-a8f9-3d713a823a13",
+        "chainId": 146,
+        "__params": {
+          "chainId": "146"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/204/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "83c94fec-2928-589b-82be-019cc77fbe5c",
+          "name": "opBNB Mainnet",
+          "chain": "opBNB",
+          "chainId": 204,
+          "rpc": [
+            "https://opbnb-mainnet-rpc.bnbchain.org",
+            "https://opbnb-mainnet.nodereal.io/v1/64a9df0874fb4a93b9d0a3849de012d3",
+            "https://opbnb-mainnet.nodereal.io/v1/e9a36765eb8a40b9bd12e680a1fd2bc5",
+            "https://opbnb-rpc.publicnode.com",
+            "https://opbnb.drpc.org"
+          ],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "BNB Chain Native Token",
+            "symbol": "BNB"
+          },
+          "explorers": [
+            {
+              "url": "https://mainnet.opbnbscan.com",
+              "name": "opbnbscan",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://opbnb.bnbchain.org/en"
+        }
+      },
+      "pageContext": {
+        "id": "83c94fec-2928-589b-82be-019cc77fbe5c",
+        "chainId": 204,
+        "__params": {
+          "chainId": "204"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/232/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "742aada2-4f0a-518d-a4a7-1bf74a067a4c",
+          "name": "Lens",
+          "chain": "Lens",
+          "chainId": 232,
+          "rpc": ["https://rpc.lens.xyz"],
+          "icon": {
+            "publicURL": "/static/c0c8c55a9a22fc83a02b4ccd1a3ac8af/lens.jpg",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/c0c8c55a9a22fc83a02b4ccd1a3ac8af/93848/lens.jpg",
+                    "srcSet": "/static/c0c8c55a9a22fc83a02b4ccd1a3ac8af/2fb2b/lens.jpg 15w,\n/static/c0c8c55a9a22fc83a02b4ccd1a3ac8af/3c559/lens.jpg 30w,\n/static/c0c8c55a9a22fc83a02b4ccd1a3ac8af/93848/lens.jpg 60w,\n/static/c0c8c55a9a22fc83a02b4ccd1a3ac8af/73bb6/lens.jpg 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/c0c8c55a9a22fc83a02b4ccd1a3ac8af/f57b3/lens.webp 15w,\n/static/c0c8c55a9a22fc83a02b4ccd1a3ac8af/bde72/lens.webp 30w,\n/static/c0c8c55a9a22fc83a02b4ccd1a3ac8af/927d1/lens.webp 60w,\n/static/c0c8c55a9a22fc83a02b4ccd1a3ac8af/507b0/lens.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "GHO",
+            "symbol": "GHO"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.lens.xyz",
+              "name": "Lens Block Explorer",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://lens.xyz"
+        }
+      },
+      "pageContext": {
+        "id": "742aada2-4f0a-518d-a4a7-1bf74a067a4c",
+        "chainId": 232,
+        "__params": {
+          "chainId": "232"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/250/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "14202473-5167-5ca6-9943-fea92f6cdc97",
+          "name": "Fantom Opera",
+          "chain": "FTM",
+          "chainId": 250,
+          "rpc": [
+            "https://rpc.ftm.tools",
+            "https://fantom-rpc.publicnode.com",
+            "https://fantom.drpc.org"
+          ],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Fantom",
+            "symbol": "FTM"
+          },
+          "explorers": [
+            {
+              "url": "https://ftmscan.com",
+              "name": "ftmscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://fantom.dex.guru",
+              "name": "dexguru",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://fantom.foundation"
+        }
+      },
+      "pageContext": {
+        "id": "14202473-5167-5ca6-9943-fea92f6cdc97",
+        "chainId": 250,
+        "__params": {
+          "chainId": "250"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/288/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "1496b914-9762-56aa-a8cf-01ae788c77d0",
+          "name": "Boba Network",
+          "chain": "ETH",
+          "chainId": 288,
+          "rpc": [
+            "https://mainnet.boba.network",
+            "https://replica.boba.network",
+            "https://boba-ethereum.gateway.tenderly.co",
+            "https://gateway.tenderly.co/public/boba-ethereum",
+            "https://boba-eth.drpc.org"
+          ],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://bobascan.com",
+              "name": "Bobascan",
+              "standard": "none"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://boba.network"
+        }
+      },
+      "pageContext": {
+        "id": "1496b914-9762-56aa-a8cf-01ae788c77d0",
+        "chainId": 288,
+        "__params": {
+          "chainId": "288"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/324/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "83383edb-6deb-5820-85ce-ff2d410a3432",
+          "name": "zkSync Mainnet",
+          "chain": "ETH",
+          "chainId": 324,
+          "rpc": ["https://mainnet.era.zksync.io", "https://zksync.drpc.org"],
+          "icon": {
+            "publicURL": "/static/8dfe55d980dae0a93cb782fdfc475646/zksync-era.svg",
+            "childImageSharp": null
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.zksync.io",
+              "name": "zkSync Era Block Explorer",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://zksync.io/"
+        }
+      },
+      "pageContext": {
+        "id": "83383edb-6deb-5820-85ce-ff2d410a3432",
+        "chainId": 324,
+        "__params": {
+          "chainId": "324"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/480/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "e3d55c49-5647-5efa-ac30-ce35725ec26a",
+          "name": "World Chain",
+          "chain": "ETH",
+          "chainId": 480,
+          "rpc": [
+            "https://worldchain-mainnet.g.alchemy.com/public",
+            "https://480.rpc.thirdweb.com",
+            "https://worldchain-mainnet.gateway.tenderly.co"
+          ],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://worldscan.org",
+              "name": "etherscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://worldchain-mainnet.explorer.alchemy.com",
+              "name": "blockscout",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://world.org/world-chain"
+        }
+      },
+      "pageContext": {
+        "id": "e3d55c49-5647-5efa-ac30-ce35725ec26a",
+        "chainId": 480,
+        "__params": {
+          "chainId": "480"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/999/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "73617f4e-f5a7-5a6d-b2e2-5b2a3d7d0742",
+          "name": "Wanchain Testnet",
+          "chain": "WAN",
+          "chainId": 999,
+          "rpc": ["https://gwan-ssl.wandevs.org:46891/"],
+          "icon": {
+            "publicURL": "/static/dd41782f700ec332278bcae42e04241b/wanchain.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/dd41782f700ec332278bcae42e04241b/7ab40/wanchain.png",
+                    "srcSet": "/static/dd41782f700ec332278bcae42e04241b/7961d/wanchain.png 15w,\n/static/dd41782f700ec332278bcae42e04241b/53973/wanchain.png 30w,\n/static/dd41782f700ec332278bcae42e04241b/7ab40/wanchain.png 60w,\n/static/dd41782f700ec332278bcae42e04241b/a8b52/wanchain.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/dd41782f700ec332278bcae42e04241b/f57b3/wanchain.webp 15w,\n/static/dd41782f700ec332278bcae42e04241b/bde72/wanchain.webp 30w,\n/static/dd41782f700ec332278bcae42e04241b/927d1/wanchain.webp 60w,\n/static/dd41782f700ec332278bcae42e04241b/507b0/wanchain.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Wancoin",
+            "symbol": "WAN"
+          },
+          "explorers": [
+            {
+              "url": "https://testnet.wanscan.org",
+              "name": "wanscan",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://testnet.wanscan.org"
+        }
+      },
+      "pageContext": {
+        "id": "73617f4e-f5a7-5a6d-b2e2-5b2a3d7d0742",
+        "chainId": 999,
+        "__params": {
+          "chainId": "999"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/1088/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "f4b4a969-4f4e-51af-b4d4-8fe37023f00d",
+          "name": "Metis Andromeda Mainnet",
+          "chain": "ETH",
+          "chainId": 1088,
+          "rpc": [
+            "https://andromeda.metis.io/?owner=1088",
+            "https://metis.drpc.org",
+            "https://metis-rpc.publicnode.com"
+          ],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Metis",
+            "symbol": "METIS"
+          },
+          "explorers": [
+            {
+              "url": "https://andromeda-explorer.metis.io",
+              "name": "blockscout",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://www.metis.io"
+        }
+      },
+      "pageContext": {
+        "id": "f4b4a969-4f4e-51af-b4d4-8fe37023f00d",
+        "chainId": 1088,
+        "__params": {
+          "chainId": "1088"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/1101/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "773f7d47-d8c4-5592-9cf8-c0300ce5be15",
+          "name": "Polygon zkEVM",
+          "chain": "Polygon",
+          "chainId": 1101,
+          "rpc": ["https://zkevm-rpc.com", "https://polygon-zkevm.drpc.org"],
+          "icon": {
+            "publicURL": "/static/9c7bbca3c35a44e79a2a82895bbc1862/zkevm.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/9c7bbca3c35a44e79a2a82895bbc1862/dc224/zkevm.png",
+                    "srcSet": "/static/9c7bbca3c35a44e79a2a82895bbc1862/b13d4/zkevm.png 15w,\n/static/9c7bbca3c35a44e79a2a82895bbc1862/23cd5/zkevm.png 30w,\n/static/9c7bbca3c35a44e79a2a82895bbc1862/dc224/zkevm.png 60w,\n/static/9c7bbca3c35a44e79a2a82895bbc1862/63126/zkevm.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/9c7bbca3c35a44e79a2a82895bbc1862/256c5/zkevm.webp 15w,\n/static/9c7bbca3c35a44e79a2a82895bbc1862/b7656/zkevm.webp 30w,\n/static/9c7bbca3c35a44e79a2a82895bbc1862/707d7/zkevm.webp 60w,\n/static/9c7bbca3c35a44e79a2a82895bbc1862/02715/zkevm.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 66
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://zkevm.polygonscan.com",
+              "name": "blockscout",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://polygon.technology/polygon-zkevm"
+        }
+      },
+      "pageContext": {
+        "id": "773f7d47-d8c4-5592-9cf8-c0300ce5be15",
+        "chainId": 1101,
+        "__params": {
+          "chainId": "1101"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/1135/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "ec0083b1-225d-5586-8bb1-aa17e3d28049",
+          "name": "Lisk",
+          "chain": "ETH",
+          "chainId": 1135,
+          "rpc": ["https://rpc.api.lisk.com"],
+          "icon": {
+            "publicURL": "/static/dc8176401080bfe006f05fd0da833a31/lisk.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/dc8176401080bfe006f05fd0da833a31/7ab40/lisk.png",
+                    "srcSet": "/static/dc8176401080bfe006f05fd0da833a31/7961d/lisk.png 15w,\n/static/dc8176401080bfe006f05fd0da833a31/53973/lisk.png 30w,\n/static/dc8176401080bfe006f05fd0da833a31/7ab40/lisk.png 60w,\n/static/dc8176401080bfe006f05fd0da833a31/a8b52/lisk.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/dc8176401080bfe006f05fd0da833a31/f57b3/lisk.webp 15w,\n/static/dc8176401080bfe006f05fd0da833a31/bde72/lisk.webp 30w,\n/static/dc8176401080bfe006f05fd0da833a31/927d1/lisk.webp 60w,\n/static/dc8176401080bfe006f05fd0da833a31/507b0/lisk.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://blockscout.lisk.com",
+              "name": "blockscout",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://lisk.com"
+        }
+      },
+      "pageContext": {
+        "id": "ec0083b1-225d-5586-8bb1-aa17e3d28049",
+        "chainId": 1135,
+        "__params": {
+          "chainId": "1135"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/1284/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "c9fb65d9-3869-533e-b48b-73ad5b8fd04b",
+          "name": "Moonbeam",
+          "chain": "MOON",
+          "chainId": 1284,
+          "rpc": [
+            "https://rpc.api.moonbeam.network",
+            "https://moonbeam.public.blastapi.io",
+            "https://moonbeam-rpc.dwellir.com",
+            "https://moonbeam.api.onfinality.io/public",
+            "https://moonbeam.unitedbloc.com",
+            "https://moonbeam-rpc.publicnode.com",
+            "https://moonbeam.drpc.org"
+          ],
+          "icon": {
+            "publicURL": "/static/1f6e02f40be81dfebf60bec599aa73dd/moonbeam.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/1f6e02f40be81dfebf60bec599aa73dd/7ab40/moonbeam.png",
+                    "srcSet": "/static/1f6e02f40be81dfebf60bec599aa73dd/7961d/moonbeam.png 15w,\n/static/1f6e02f40be81dfebf60bec599aa73dd/53973/moonbeam.png 30w,\n/static/1f6e02f40be81dfebf60bec599aa73dd/7ab40/moonbeam.png 60w,\n/static/1f6e02f40be81dfebf60bec599aa73dd/a8b52/moonbeam.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/1f6e02f40be81dfebf60bec599aa73dd/f57b3/moonbeam.webp 15w,\n/static/1f6e02f40be81dfebf60bec599aa73dd/bde72/moonbeam.webp 30w,\n/static/1f6e02f40be81dfebf60bec599aa73dd/927d1/moonbeam.webp 60w,\n/static/1f6e02f40be81dfebf60bec599aa73dd/507b0/moonbeam.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Glimmer",
+            "symbol": "GLMR"
+          },
+          "explorers": [
+            {
+              "url": "https://moonbeam.moonscan.io",
+              "name": "moonscan",
+              "standard": "none"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://moonbeam.network/networks/moonbeam/"
+        }
+      },
+      "pageContext": {
+        "id": "c9fb65d9-3869-533e-b48b-73ad5b8fd04b",
+        "chainId": 1284,
+        "__params": {
+          "chainId": "1284"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/1285/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "6778c764-630b-5ea0-a64f-e75df36bacf3",
+          "name": "Moonriver",
+          "chain": "MOON",
+          "chainId": 1285,
+          "rpc": [
+            "https://rpc.api.moonriver.moonbeam.network",
+            "https://moonriver.public.blastapi.io",
+            "https://moonriver-rpc.dwellir.com",
+            "https://moonriver.api.onfinality.io/public",
+            "https://moonriver.unitedbloc.com",
+            "https://moonriver-rpc.publicnode.com",
+            "https://moonriver.drpc.org"
+          ],
+          "icon": {
+            "publicURL": "/static/0004a193379564ba04f419dc50e441dd/moonriver.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/0004a193379564ba04f419dc50e441dd/7ab40/moonriver.png",
+                    "srcSet": "/static/0004a193379564ba04f419dc50e441dd/7961d/moonriver.png 15w,\n/static/0004a193379564ba04f419dc50e441dd/53973/moonriver.png 30w,\n/static/0004a193379564ba04f419dc50e441dd/7ab40/moonriver.png 60w,\n/static/0004a193379564ba04f419dc50e441dd/a8b52/moonriver.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/0004a193379564ba04f419dc50e441dd/f57b3/moonriver.webp 15w,\n/static/0004a193379564ba04f419dc50e441dd/bde72/moonriver.webp 30w,\n/static/0004a193379564ba04f419dc50e441dd/927d1/moonriver.webp 60w,\n/static/0004a193379564ba04f419dc50e441dd/507b0/moonriver.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Moonriver",
+            "symbol": "MOVR"
+          },
+          "explorers": [
+            {
+              "url": "https://moonriver.moonscan.io",
+              "name": "moonscan",
+              "standard": "none"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://moonbeam.network/networks/moonriver/"
+        }
+      },
+      "pageContext": {
+        "id": "6778c764-630b-5ea0-a64f-e75df36bacf3",
+        "chainId": 1285,
+        "__params": {
+          "chainId": "1285"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/1329/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "8280f1f7-a79b-505a-a6df-9fd3d166c6d1",
+          "name": "Sei Network",
+          "chain": "Sei",
+          "chainId": 1329,
+          "rpc": ["https://evm-rpc.sei-apis.com"],
+          "icon": {
+            "publicURL": "/static/4bd718f9f1b6d789c811d8f50dbc4fa4/seiv2.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/4bd718f9f1b6d789c811d8f50dbc4fa4/7ab40/seiv2.png",
+                    "srcSet": "/static/4bd718f9f1b6d789c811d8f50dbc4fa4/7961d/seiv2.png 15w,\n/static/4bd718f9f1b6d789c811d8f50dbc4fa4/53973/seiv2.png 30w,\n/static/4bd718f9f1b6d789c811d8f50dbc4fa4/7ab40/seiv2.png 60w,\n/static/4bd718f9f1b6d789c811d8f50dbc4fa4/a8b52/seiv2.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/4bd718f9f1b6d789c811d8f50dbc4fa4/f57b3/seiv2.webp 15w,\n/static/4bd718f9f1b6d789c811d8f50dbc4fa4/bde72/seiv2.webp 30w,\n/static/4bd718f9f1b6d789c811d8f50dbc4fa4/927d1/seiv2.webp 60w,\n/static/4bd718f9f1b6d789c811d8f50dbc4fa4/507b0/seiv2.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Sei",
+            "symbol": "SEI"
+          },
+          "explorers": [
+            {
+              "url": "https://seitrace.com",
+              "name": "Seitrace",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://www.sei.io"
+        }
+      },
+      "pageContext": {
+        "id": "8280f1f7-a79b-505a-a6df-9fd3d166c6d1",
+        "chainId": 1329,
+        "__params": {
+          "chainId": "1329"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/1625/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "75dd35db-8a06-51b7-b354-8b6066f1f228",
+          "name": "Gravity Alpha Mainnet",
+          "chain": "Gravity",
+          "chainId": 1625,
+          "rpc": ["https://rpc.gravity.xyz", "https://rpc.ankr.com/gravity"],
+          "icon": {
+            "publicURL": "/static/c2fea73b0077b1e4a0d74afb5f021ffa/gravity.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/c2fea73b0077b1e4a0d74afb5f021ffa/7ab40/gravity.png",
+                    "srcSet": "/static/c2fea73b0077b1e4a0d74afb5f021ffa/7961d/gravity.png 15w,\n/static/c2fea73b0077b1e4a0d74afb5f021ffa/53973/gravity.png 30w,\n/static/c2fea73b0077b1e4a0d74afb5f021ffa/7ab40/gravity.png 60w,\n/static/c2fea73b0077b1e4a0d74afb5f021ffa/a8b52/gravity.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/c2fea73b0077b1e4a0d74afb5f021ffa/f57b3/gravity.webp 15w,\n/static/c2fea73b0077b1e4a0d74afb5f021ffa/bde72/gravity.webp 30w,\n/static/c2fea73b0077b1e4a0d74afb5f021ffa/927d1/gravity.webp 60w,\n/static/c2fea73b0077b1e4a0d74afb5f021ffa/507b0/gravity.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Gravity",
+            "symbol": "G"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.gravity.xyz",
+              "name": "Gravity Alpha Mainnet Explorer",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://gscan.xyz",
+              "name": "gscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://www.oklink.com/gravity-alpha",
+              "name": "OKLink",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://gravity.xyz"
+        }
+      },
+      "pageContext": {
+        "id": "75dd35db-8a06-51b7-b354-8b6066f1f228",
+        "chainId": 1625,
+        "__params": {
+          "chainId": "1625"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/1868/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "d1813e6b-7b2e-5dec-92cd-aa219a58edf6",
+          "name": "Soneium",
+          "chain": "ETH",
+          "chainId": 1868,
+          "rpc": ["https://rpc.soneium.org"],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://soneium.blockscout.com",
+              "name": "blockscout",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://www.okx.com/web3/explorer/soneium",
+              "name": "OKLink",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://soneium.slam.vision",
+              "name": "SlamVision",
+              "standard": "none"
+            }
+          ],
+          "status": "active",
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://soneium.org"
+        }
+      },
+      "pageContext": {
+        "id": "d1813e6b-7b2e-5dec-92cd-aa219a58edf6",
+        "chainId": 1868,
+        "__params": {
+          "chainId": "1868"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/1923/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "ff24d28d-1a05-54ba-acbf-f923bc70f82d",
+          "name": "Swellchain",
+          "chain": "ETH",
+          "chainId": 1923,
+          "rpc": [
+            "https://swell-mainnet.alt.technology",
+            "https://rpc.ankr.com/swell"
+          ],
+          "icon": {
+            "publicURL": "/static/6e3dcb180ab073851d390489694580d7/swell.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/6e3dcb180ab073851d390489694580d7/7ab40/swell.png",
+                    "srcSet": "/static/6e3dcb180ab073851d390489694580d7/7961d/swell.png 15w,\n/static/6e3dcb180ab073851d390489694580d7/53973/swell.png 30w,\n/static/6e3dcb180ab073851d390489694580d7/7ab40/swell.png 60w,\n/static/6e3dcb180ab073851d390489694580d7/a8b52/swell.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/6e3dcb180ab073851d390489694580d7/f57b3/swell.webp 15w,\n/static/6e3dcb180ab073851d390489694580d7/bde72/swell.webp 30w,\n/static/6e3dcb180ab073851d390489694580d7/927d1/swell.webp 60w,\n/static/6e3dcb180ab073851d390489694580d7/507b0/swell.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.swellnetwork.io",
+              "name": "Swellchain Explorer",
+              "standard": "none"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://app.swellnetwork.io/layer2/swell-l2"
+        }
+      },
+      "pageContext": {
+        "id": "ff24d28d-1a05-54ba-acbf-f923bc70f82d",
+        "chainId": 1923,
+        "__params": {
+          "chainId": "1923"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/2741/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "8590cffe-b05b-57e8-8a94-871e9c85a342",
+          "name": "Abstract",
+          "chain": "Abstract",
+          "chainId": 2741,
+          "rpc": ["https://api.mainnet.abs.xyz"],
+          "icon": {
+            "publicURL": "/static/defb4486a541bd6fefa29269d1ebfdf3/abstract.svg",
+            "childImageSharp": null
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://abscan.org",
+              "name": "Etherscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://explorer.mainnet.abs.xyz",
+              "name": "Abstract Explorer",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://abs.xyz"
+        }
+      },
+      "pageContext": {
+        "id": "8590cffe-b05b-57e8-8a94-871e9c85a342",
+        "chainId": 2741,
+        "__params": {
+          "chainId": "2741"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/5000/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "4b535124-31fa-5200-b434-4daaf80a9d2a",
+          "name": "Mantle",
+          "chain": "ETH",
+          "chainId": 5000,
+          "rpc": [
+            "https://rpc.mantle.xyz",
+            "https://mantle-rpc.publicnode.com"
+          ],
+          "icon": {
+            "publicURL": "/static/c93f22e3abf02b11b2330c65b6b647b9/mantle.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/c93f22e3abf02b11b2330c65b6b647b9/7ab40/mantle.png",
+                    "srcSet": "/static/c93f22e3abf02b11b2330c65b6b647b9/7961d/mantle.png 15w,\n/static/c93f22e3abf02b11b2330c65b6b647b9/53973/mantle.png 30w,\n/static/c93f22e3abf02b11b2330c65b6b647b9/7ab40/mantle.png 60w,\n/static/c93f22e3abf02b11b2330c65b6b647b9/a8b52/mantle.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/c93f22e3abf02b11b2330c65b6b647b9/f57b3/mantle.webp 15w,\n/static/c93f22e3abf02b11b2330c65b6b647b9/bde72/mantle.webp 30w,\n/static/c93f22e3abf02b11b2330c65b6b647b9/927d1/mantle.webp 60w,\n/static/c93f22e3abf02b11b2330c65b6b647b9/507b0/mantle.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Mantle",
+            "symbol": "MNT"
+          },
+          "explorers": [
+            {
+              "url": "https://mantlescan.xyz",
+              "name": "mantlescan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://explorer.mantle.xyz",
+              "name": "Mantle Explorer",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://mantle.xyz"
+        }
+      },
+      "pageContext": {
+        "id": "4b535124-31fa-5200-b434-4daaf80a9d2a",
+        "chainId": 5000,
+        "__params": {
+          "chainId": "5000"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/8217/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "640e366e-7810-50a2-b903-13fdd00e18d4",
+          "name": "Kaia Mainnet",
+          "chain": "KAIA",
+          "chainId": 8217,
+          "rpc": ["https://public-en.node.kaia.io"],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "KAIA",
+            "symbol": "KAIA"
+          },
+          "explorers": [
+            {
+              "url": "https://kaiascope.com",
+              "name": "Kaiascope",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://kaiascan.io",
+              "name": "Kaiascan",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://kaia.io"
+        }
+      },
+      "pageContext": {
+        "id": "640e366e-7810-50a2-b903-13fdd00e18d4",
+        "chainId": 8217,
+        "__params": {
+          "chainId": "8217"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/8453/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "dc6f2e61-b9dc-57c4-a66c-117fe091efdf",
+          "name": "Base",
+          "chain": "ETH",
+          "chainId": 8453,
+          "rpc": [
+            "https://mainnet.base.org/",
+            "https://developer-access-mainnet.base.org/",
+            "https://base.gateway.tenderly.co",
+            "https://base-rpc.publicnode.com"
+          ],
+          "icon": {
+            "publicURL": "/static/8bf043c4eab7887a7504aa3cea79e55d/base.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/8bf043c4eab7887a7504aa3cea79e55d/7ab40/base.png",
+                    "srcSet": "/static/8bf043c4eab7887a7504aa3cea79e55d/7961d/base.png 15w,\n/static/8bf043c4eab7887a7504aa3cea79e55d/53973/base.png 30w,\n/static/8bf043c4eab7887a7504aa3cea79e55d/7ab40/base.png 60w,\n/static/8bf043c4eab7887a7504aa3cea79e55d/a8b52/base.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/8bf043c4eab7887a7504aa3cea79e55d/f57b3/base.webp 15w,\n/static/8bf043c4eab7887a7504aa3cea79e55d/bde72/base.webp 30w,\n/static/8bf043c4eab7887a7504aa3cea79e55d/927d1/base.webp 60w,\n/static/8bf043c4eab7887a7504aa3cea79e55d/507b0/base.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://basescan.org",
+              "name": "basescan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://base.blockscout.com",
+              "name": "basescout",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://base.dex.guru",
+              "name": "dexguru",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://base.superscan.network",
+              "name": "Routescan",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": "active",
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://base.org"
+        }
+      },
+      "pageContext": {
+        "id": "dc6f2e61-b9dc-57c4-a66c-117fe091efdf",
+        "chainId": 8453,
+        "__params": {
+          "chainId": "8453"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/13371/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "c4ac773a-01a0-5726-a8be-e397eda5a1c3",
+          "name": "Immutable zkEVM",
+          "chain": "Immutable zkEVM",
+          "chainId": 13371,
+          "rpc": [
+            "https://rpc.immutable.com",
+            "https://immutable-zkevm.drpc.org"
+          ],
+          "icon": {
+            "publicURL": "/static/3033f071b2b36ca071f5ec77ff836751/immutable.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/3033f071b2b36ca071f5ec77ff836751/7ab40/immutable.png",
+                    "srcSet": "/static/3033f071b2b36ca071f5ec77ff836751/7961d/immutable.png 15w,\n/static/3033f071b2b36ca071f5ec77ff836751/53973/immutable.png 30w,\n/static/3033f071b2b36ca071f5ec77ff836751/7ab40/immutable.png 60w,\n/static/3033f071b2b36ca071f5ec77ff836751/a8b52/immutable.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/3033f071b2b36ca071f5ec77ff836751/f57b3/immutable.webp 15w,\n/static/3033f071b2b36ca071f5ec77ff836751/bde72/immutable.webp 30w,\n/static/3033f071b2b36ca071f5ec77ff836751/927d1/immutable.webp 60w,\n/static/3033f071b2b36ca071f5ec77ff836751/507b0/immutable.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "IMX",
+            "symbol": "IMX"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.immutable.com",
+              "name": "Immutable explorer",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": ["https://docs.immutable.com/docs/zkEVM/guides/faucet"],
+          "redFlags": null,
+          "infoURL": "https://www.immutable.com"
+        }
+      },
+      "pageContext": {
+        "id": "c4ac773a-01a0-5726-a8be-e397eda5a1c3",
+        "chainId": 13371,
+        "__params": {
+          "chainId": "13371"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/33139/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "f495a79d-32ae-54a3-a119-98636ea7fac1",
+          "name": "ApeChain",
+          "chain": "apechain",
+          "chainId": 33139,
+          "rpc": ["https://rpc.apechain.com"],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "ApeCoin",
+            "symbol": "APE"
+          },
+          "explorers": [
+            {
+              "url": "https://apescan.io",
+              "name": "ApeChain Explorer",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://apechain.com"
+        }
+      },
+      "pageContext": {
+        "id": "f495a79d-32ae-54a3-a119-98636ea7fac1",
+        "chainId": 33139,
+        "__params": {
+          "chainId": "33139"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/34443/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "9a60c360-f3b1-50f2-83c8-b6055e7fb733",
+          "name": "Mode",
+          "chain": "ETH",
+          "chainId": 34443,
+          "rpc": ["https://mainnet.mode.network", "https://mode.drpc.org"],
+          "icon": {
+            "publicURL": "/static/0f7e2f6a10a4732c4736eedc053e697c/mode.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/0f7e2f6a10a4732c4736eedc053e697c/7ab40/mode.png",
+                    "srcSet": "/static/0f7e2f6a10a4732c4736eedc053e697c/7961d/mode.png 15w,\n/static/0f7e2f6a10a4732c4736eedc053e697c/53973/mode.png 30w,\n/static/0f7e2f6a10a4732c4736eedc053e697c/7ab40/mode.png 60w,\n/static/0f7e2f6a10a4732c4736eedc053e697c/a8b52/mode.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/0f7e2f6a10a4732c4736eedc053e697c/f57b3/mode.webp 15w,\n/static/0f7e2f6a10a4732c4736eedc053e697c/bde72/mode.webp 30w,\n/static/0f7e2f6a10a4732c4736eedc053e697c/927d1/mode.webp 60w,\n/static/0f7e2f6a10a4732c4736eedc053e697c/507b0/mode.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.mode.network",
+              "name": "modescout",
+              "standard": "none"
+            },
+            {
+              "url": "https://modescan.io",
+              "name": "Routescan",
+              "standard": "none"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://docs.mode.network/"
+        }
+      },
+      "pageContext": {
+        "id": "9a60c360-f3b1-50f2-83c8-b6055e7fb733",
+        "chainId": 34443,
+        "__params": {
+          "chainId": "34443"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/42161/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "9ae0ffcf-ead6-54ad-9b77-cb87cab57ea0",
+          "name": "Arbitrum One",
+          "chain": "ETH",
+          "chainId": 42161,
+          "rpc": [
+            "https://arbitrum-mainnet.infura.io/v3/${INFURA_API_KEY}",
+            "https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}",
+            "https://arb1.arbitrum.io/rpc",
+            "https://arbitrum-one-rpc.publicnode.com"
+          ],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://arbiscan.io",
+              "name": "Arbiscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://explorer.arbitrum.io",
+              "name": "Arbitrum Explorer",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://arbitrum.dex.guru",
+              "name": "dexguru",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://arbitrum.io"
+        }
+      },
+      "pageContext": {
+        "id": "9ae0ffcf-ead6-54ad-9b77-cb87cab57ea0",
+        "chainId": 42161,
+        "__params": {
+          "chainId": "42161"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/42220/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "923c1526-8f6b-5748-9850-0530eee8f8a4",
+          "name": "Celo Mainnet",
+          "chain": "CELO",
+          "chainId": 42220,
+          "rpc": ["https://forno.celo.org"],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "CELO",
+            "symbol": "CELO"
+          },
+          "explorers": [
+            {
+              "url": "https://celoscan.io",
+              "name": "Celoscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://explorer.celo.org",
+              "name": "blockscout",
+              "standard": "none"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://docs.celo.org/"
+        }
+      },
+      "pageContext": {
+        "id": "923c1526-8f6b-5748-9850-0530eee8f8a4",
+        "chainId": 42220,
+        "__params": {
+          "chainId": "42220"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/43114/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "d9ea4f55-2f69-52ea-bec7-620aca408325",
+          "name": "Avalanche C-Chain",
+          "chain": "AVAX",
+          "chainId": 43114,
+          "rpc": [
+            "https://api.avax.network/ext/bc/C/rpc",
+            "https://avalanche-c-chain-rpc.publicnode.com"
+          ],
+          "icon": {
+            "publicURL": "/static/bcfbb16284d0fe74e311ef8e8ac5e22b/avax.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/bcfbb16284d0fe74e311ef8e8ac5e22b/7ab40/avax.png",
+                    "srcSet": "/static/bcfbb16284d0fe74e311ef8e8ac5e22b/7961d/avax.png 15w,\n/static/bcfbb16284d0fe74e311ef8e8ac5e22b/53973/avax.png 30w,\n/static/bcfbb16284d0fe74e311ef8e8ac5e22b/7ab40/avax.png 60w,\n/static/bcfbb16284d0fe74e311ef8e8ac5e22b/a8b52/avax.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/bcfbb16284d0fe74e311ef8e8ac5e22b/f57b3/avax.webp 15w,\n/static/bcfbb16284d0fe74e311ef8e8ac5e22b/bde72/avax.webp 30w,\n/static/bcfbb16284d0fe74e311ef8e8ac5e22b/927d1/avax.webp 60w,\n/static/bcfbb16284d0fe74e311ef8e8ac5e22b/507b0/avax.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Avalanche",
+            "symbol": "AVAX"
+          },
+          "explorers": [
+            {
+              "url": "https://snowscan.xyz",
+              "name": "Etherscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://snowtrace.io",
+              "name": "Routescan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://avascan.info",
+              "name": "Avascan",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://www.avax.network/"
+        }
+      },
+      "pageContext": {
+        "id": "d9ea4f55-2f69-52ea-bec7-620aca408325",
+        "chainId": 43114,
+        "__params": {
+          "chainId": "43114"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/55244/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "663ff4d4-a7a3-522e-96e2-3e97d96ed647",
+          "name": "Superposition",
+          "chain": "Superposition",
+          "chainId": 55244,
+          "rpc": ["https://rpc.superposition.so"],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.superposition.so",
+              "name": "Superposition Explorer",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://superposition.so"
+        }
+      },
+      "pageContext": {
+        "id": "663ff4d4-a7a3-522e-96e2-3e97d96ed647",
+        "chainId": 55244,
+        "__params": {
+          "chainId": "55244"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/57073/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "b0d1906c-b0de-573c-8fa7-af70f375b530",
+          "name": "Ink",
+          "chain": "ETH",
+          "chainId": 57073,
+          "rpc": [
+            "https://rpc-gel.inkonchain.com",
+            "https://rpc-qnd.inkonchain.com"
+          ],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.inkonchain.com",
+              "name": "Ink Explorer",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": "active",
+          "faucets": ["https://inkonchain.com/faucet"],
+          "redFlags": null,
+          "infoURL": "https://inkonchain.com"
+        }
+      },
+      "pageContext": {
+        "id": "b0d1906c-b0de-573c-8fa7-af70f375b530",
+        "chainId": 57073,
+        "__params": {
+          "chainId": "57073"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/59144/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "8bf4bd24-4fb0-5d4b-b816-e32287b6f4c0",
+          "name": "Linea",
+          "chain": "ETH",
+          "chainId": 59144,
+          "rpc": [
+            "https://rpc.linea.build",
+            "https://linea-mainnet.infura.io/v3/${INFURA_API_KEY}",
+            "https://linea-rpc.publicnode.com"
+          ],
+          "icon": {
+            "publicURL": "/static/782464d01dd5e7df73204cd71be09b1e/linea.svg",
+            "childImageSharp": null
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Linea Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://lineascan.build",
+              "name": "Etherscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://explorer.linea.build",
+              "name": "Blockscout",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://linea.l2scan.co",
+              "name": "L2scan",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": "active",
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://linea.build"
+        }
+      },
+      "pageContext": {
+        "id": "8bf4bd24-4fb0-5d4b-b816-e32287b6f4c0",
+        "chainId": 59144,
+        "__params": {
+          "chainId": "59144"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/60808/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "8873d3c3-84ba-5d03-929e-d1269bd6b3c5",
+          "name": "BOB",
+          "chain": "ETH",
+          "chainId": 60808,
+          "rpc": [
+            "https://rpc.gobob.xyz",
+            "https://bob-mainnet.public.blastapi.io"
+          ],
+          "icon": {
+            "publicURL": "/static/8091568f24e1ed8e97730bd73f91281d/bob.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/8091568f24e1ed8e97730bd73f91281d/ebb9b/bob.png",
+                    "srcSet": "/static/8091568f24e1ed8e97730bd73f91281d/958bc/bob.png 15w,\n/static/8091568f24e1ed8e97730bd73f91281d/78045/bob.png 30w,\n/static/8091568f24e1ed8e97730bd73f91281d/ebb9b/bob.png 60w,\n/static/8091568f24e1ed8e97730bd73f91281d/8c0cf/bob.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/8091568f24e1ed8e97730bd73f91281d/b351f/bob.webp 15w,\n/static/8091568f24e1ed8e97730bd73f91281d/f8cc7/bob.webp 30w,\n/static/8091568f24e1ed8e97730bd73f91281d/a0bd3/bob.webp 60w,\n/static/8091568f24e1ed8e97730bd73f91281d/dbc58/bob.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 76
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.gobob.xyz",
+              "name": "bobscout",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": "active",
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://gobob.xyz"
+        }
+      },
+      "pageContext": {
+        "id": "8873d3c3-84ba-5d03-929e-d1269bd6b3c5",
+        "chainId": 60808,
+        "__params": {
+          "chainId": "60808"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/80094/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "6b4dda2d-6727-5b24-89f4-575542fb5fb4",
+          "name": "Berachain",
+          "chain": "Berachain",
+          "chainId": 80094,
+          "rpc": [
+            "https://rpc.berachain.com",
+            "https://berachain-rpc.publicnode.com",
+            "https://rpc.berachain-apis.com"
+          ],
+          "icon": {
+            "publicURL": "/static/9fe409117e80422c4d3d6c7d47ce3f5c/berachain.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/9fe409117e80422c4d3d6c7d47ce3f5c/7ab40/berachain.png",
+                    "srcSet": "/static/9fe409117e80422c4d3d6c7d47ce3f5c/7961d/berachain.png 15w,\n/static/9fe409117e80422c4d3d6c7d47ce3f5c/53973/berachain.png 30w,\n/static/9fe409117e80422c4d3d6c7d47ce3f5c/7ab40/berachain.png 60w,\n/static/9fe409117e80422c4d3d6c7d47ce3f5c/a8b52/berachain.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/9fe409117e80422c4d3d6c7d47ce3f5c/f57b3/berachain.webp 15w,\n/static/9fe409117e80422c4d3d6c7d47ce3f5c/bde72/berachain.webp 30w,\n/static/9fe409117e80422c4d3d6c7d47ce3f5c/927d1/berachain.webp 60w,\n/static/9fe409117e80422c4d3d6c7d47ce3f5c/507b0/berachain.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "BERA Token",
+            "symbol": "BERA"
+          },
+          "explorers": [
+            {
+              "url": "https://berascan.com",
+              "name": "Berascan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://beratrail.io",
+              "name": "Beratrail",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://www.berachain.com"
+        }
+      },
+      "pageContext": {
+        "id": "6b4dda2d-6727-5b24-89f4-575542fb5fb4",
+        "chainId": 80094,
+        "__params": {
+          "chainId": "80094"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/81457/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "e3c46e9e-44b8-5aff-ad64-be051f77079b",
+          "name": "Blast",
+          "chain": "ETH",
+          "chainId": 81457,
+          "rpc": [
+            "https://rpc.blast.io",
+            "https://rpc.ankr.com/blast",
+            "https://blast.din.dev/rpc",
+            "https://blastl2-mainnet.public.blastapi.io",
+            "https://blast.blockpi.network/v1/rpc/public",
+            "https://blast-rpc.publicnode.com"
+          ],
+          "icon": {
+            "publicURL": "/static/e29cdf7c4f76649605adbf25071b78cb/blast.jpg",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/e29cdf7c4f76649605adbf25071b78cb/93848/blast.jpg",
+                    "srcSet": "/static/e29cdf7c4f76649605adbf25071b78cb/2fb2b/blast.jpg 15w,\n/static/e29cdf7c4f76649605adbf25071b78cb/3c559/blast.jpg 30w,\n/static/e29cdf7c4f76649605adbf25071b78cb/93848/blast.jpg 60w,\n/static/e29cdf7c4f76649605adbf25071b78cb/73bb6/blast.jpg 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/e29cdf7c4f76649605adbf25071b78cb/f57b3/blast.webp 15w,\n/static/e29cdf7c4f76649605adbf25071b78cb/bde72/blast.webp 30w,\n/static/e29cdf7c4f76649605adbf25071b78cb/927d1/blast.webp 60w,\n/static/e29cdf7c4f76649605adbf25071b78cb/507b0/blast.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://blastscan.io",
+              "name": "Blastscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://blastexplorer.io",
+              "name": "Blast Explorer",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": "active",
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://blast.io/"
+        }
+      },
+      "pageContext": {
+        "id": "e3c46e9e-44b8-5aff-ad64-be051f77079b",
+        "chainId": 81457,
+        "__params": {
+          "chainId": "81457"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/167000/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "2e5faafd-2847-59d6-8ed4-c7116394ca1d",
+          "name": "Taiko Alethia",
+          "chain": "ETH",
+          "chainId": 167000,
+          "rpc": [
+            "https://rpc.mainnet.taiko.xyz",
+            "https://taiko-rpc.publicnode.com"
+          ],
+          "icon": {
+            "publicURL": "/static/b86f026c2349c28eea37394742d9220e/taiko.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/b86f026c2349c28eea37394742d9220e/931ff/taiko.png",
+                    "srcSet": "/static/b86f026c2349c28eea37394742d9220e/01fd5/taiko.png 15w,\n/static/b86f026c2349c28eea37394742d9220e/b54e9/taiko.png 30w,\n/static/b86f026c2349c28eea37394742d9220e/931ff/taiko.png 60w,\n/static/b86f026c2349c28eea37394742d9220e/a0c70/taiko.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/b86f026c2349c28eea37394742d9220e/af843/taiko.webp 15w,\n/static/b86f026c2349c28eea37394742d9220e/8ccfc/taiko.webp 30w,\n/static/b86f026c2349c28eea37394742d9220e/56f04/taiko.webp 60w,\n/static/b86f026c2349c28eea37394742d9220e/17357/taiko.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 54
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://taikoscan.io",
+              "name": "etherscan",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://taikoexplorer.com",
+              "name": "Routescan",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": "active",
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://taiko.xyz"
+        }
+      },
+      "pageContext": {
+        "id": "2e5faafd-2847-59d6-8ed4-c7116394ca1d",
+        "chainId": 167000,
+        "__params": {
+          "chainId": "167000"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/534352/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "f2a48f8c-5330-5f48-8555-ef4a80552c91",
+          "name": "Scroll",
+          "chain": "ETH",
+          "chainId": 534352,
+          "rpc": [
+            "https://rpc.scroll.io",
+            "https://rpc.ankr.com/scroll",
+            "https://scroll-mainnet.chainstacklabs.com",
+            "https://scroll-rpc.publicnode.com"
+          ],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://scrollscan.com",
+              "name": "Scrollscan",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": "active",
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://scroll.io"
+        }
+      },
+      "pageContext": {
+        "id": "f2a48f8c-5330-5f48-8555-ef4a80552c91",
+        "chainId": 534352,
+        "__params": {
+          "chainId": "534352"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/21000000/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "9ecf1895-73dc-593f-8d1b-3eeb65123a83",
+          "name": "Corn",
+          "chain": "BTCN",
+          "chainId": 21000000,
+          "rpc": [
+            "https://mainnet.corn-rpc.com",
+            "https://rpc.ankr.com/corn_maizenet",
+            "https://maizenet-rpc.usecorn.com"
+          ],
+          "icon": {
+            "publicURL": "/static/17ea6378ed64323e21d911b51a001d8c/corn.png",
+            "childImageSharp": {
+              "gatsbyImageData": {
+                "layout": "constrained",
+                "images": {
+                  "fallback": {
+                    "src": "/static/17ea6378ed64323e21d911b51a001d8c/7ab40/corn.png",
+                    "srcSet": "/static/17ea6378ed64323e21d911b51a001d8c/7961d/corn.png 15w,\n/static/17ea6378ed64323e21d911b51a001d8c/53973/corn.png 30w,\n/static/17ea6378ed64323e21d911b51a001d8c/7ab40/corn.png 60w,\n/static/17ea6378ed64323e21d911b51a001d8c/a8b52/corn.png 120w",
+                    "sizes": "(min-width: 60px) 60px, 100vw"
+                  },
+                  "sources": [
+                    {
+                      "srcSet": "/static/17ea6378ed64323e21d911b51a001d8c/f57b3/corn.webp 15w,\n/static/17ea6378ed64323e21d911b51a001d8c/bde72/corn.webp 30w,\n/static/17ea6378ed64323e21d911b51a001d8c/927d1/corn.webp 60w,\n/static/17ea6378ed64323e21d911b51a001d8c/507b0/corn.webp 120w",
+                      "type": "image/webp",
+                      "sizes": "(min-width: 60px) 60px, 100vw"
+                    }
+                  ]
+                },
+                "width": 60,
+                "height": 60
+              }
+            }
+          },
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Bitcorn",
+            "symbol": "BTCN"
+          },
+          "explorers": [
+            {
+              "url": "https://cornscan.io",
+              "name": "Corn Explorer",
+              "standard": "EIP3091"
+            },
+            {
+              "url": "https://maizenet-explorer.usecorn.com",
+              "name": "Corn Blockscout",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://usecorn.com"
+        }
+      },
+      "pageContext": {
+        "id": "9ecf1895-73dc-593f-8d1b-3eeb65123a83",
+        "chainId": 21000000,
+        "__params": {
+          "chainId": "21000000"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  },
+  {
+    "componentChunkName": "component---src-pages-chain-chain-chain-id-tsx",
+    "path": "/chain/1313161554/",
+    "result": {
+      "data": {
+        "chain": {
+          "id": "add0c56d-6328-5efc-a2a5-63801e59735a",
+          "name": "Aurora Mainnet",
+          "chain": "NEAR",
+          "chainId": 1313161554,
+          "rpc": ["https://mainnet.aurora.dev", "https://aurora.drpc.org"],
+          "icon": null,
+          "nativeCurrency": {
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH"
+          },
+          "explorers": [
+            {
+              "url": "https://explorer.aurora.dev",
+              "name": "Aurora Explorer",
+              "standard": "EIP3091"
+            }
+          ],
+          "status": null,
+          "faucets": [],
+          "redFlags": null,
+          "infoURL": "https://aurora.dev"
+        }
+      },
+      "pageContext": {
+        "id": "add0c56d-6328-5efc-a2a5-63801e59735a",
+        "chainId": 1313161554,
+        "__params": {
+          "chainId": "1313161554"
+        }
+      }
+    },
+    "staticQueryHashes": ["63159454"],
+    "slicesMap": {}
+  }
+]

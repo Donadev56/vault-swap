@@ -1,15 +1,10 @@
-
-
 # ⚡ VaultSwap
 
 VaultSwap is a powerful, non-custodial DEX aggregator powered by the [LiFi protocol](https://www.li.fi/), offering seamless cross-chain swaps and bridging with AI-powered support. Built with performance, simplicity, and extensibility in mind.
 
- 
 <img  src="https://vswap.io/images/v-logo.png" alt="V-swap" width="200"/>
 
-
-OVERVIEW
----
+## OVERVIEW
 
 ![VaultSwap Example](https://raw.githubusercontent.com/Donadev56/vault-swap/main/public/images/v-example.gif)
 
@@ -57,110 +52,72 @@ Run the development server:
 pnpm dev
 ```
 
-Add in  `app/api/lifi-proxy/\[...path\]/route.ts`
+Add in `app/api/lifi-proxy/\[...path\]/route.ts`
 the current code :
 
 ```ts
-import { NextRequest, NextResponse } from  "next/server";
-
-  
+import { NextRequest, NextResponse } from "next/server";
 
 // Base URL of the actual LiFi API to proxy to
 
-const  LIFI_API_BASE  =  "https://li.quest/v1";
+const LIFI_API_BASE = "https://li.quest/v1";
 
-  
-
-export  async  function  GET(req:  NextRequest) {
-
-return  await  forwardRequest(req);
-
+export async function GET(req: NextRequest) {
+  return await forwardRequest(req);
 }
 
-  
-
-export  async  function  POST(req:  NextRequest) {
-
-return  await  forwardRequest(req);
-
+export async function POST(req: NextRequest) {
+  return await forwardRequest(req);
 }
 
-  
+async function forwardRequest(req: NextRequest) {
+  try {
+    // Extract the path after /api/lifi-proxy/
 
-async  function  forwardRequest(req:  NextRequest) {
+    // req.nextUrl.pathname = "/api/lifi-proxy/chains" for example
 
-try {
+    // We want the part after /api/lifi-proxy => "/chains"
 
-// Extract the path after /api/lifi-proxy/
+    const urlPath = req.nextUrl.pathname.replace(/^\/api\/lifi-proxy/, "");
 
-// req.nextUrl.pathname = "/api/lifi-proxy/chains" for example
+    // Rebuild the full URL to the LiFi API including query params
 
-// We want the part after /api/lifi-proxy => "/chains"
+    const targetUrl = new URL(LIFI_API_BASE + urlPath);
 
-const  urlPath  =  req.nextUrl.pathname.replace(/^\/api\/lifi-proxy/, "");
+    targetUrl.search = req.nextUrl.search; // preserve query string
 
-  
+    // Forward the request with original method and headers (you can customize headers as needed)
 
-// Rebuild the full URL to the LiFi API including query params
+    const res = await fetch(targetUrl.toString(), {
+      method: req.method,
 
-const  targetUrl  =  new  URL(LIFI_API_BASE  +  urlPath);
+      headers: {
+        "Content-Type": "application/json",
 
-  
+        "x-lifi-api-key": "your-lifi-api-key", // Your API key from env
+      },
 
-targetUrl.search  =  req.nextUrl.search; // preserve query string
+      // If POST or other methods with body, forward the body as well
 
-  
+      body: ["POST", "PUT", "PATCH", "DELETE"].includes(req.method)
+        ? await req.text()
+        : undefined,
+    });
 
-// Forward the request with original method and headers (you can customize headers as needed)
+    // Build NextResponse from the proxied response
 
-const  res  =  await  fetch(targetUrl.toString(), {
+    const responseBody = await res.json(); // get response as text (can parse JSON if you want)
 
-method:  req.method,
+    // Return response with status and headers from the original API
 
-headers: {
+    return NextResponse.json(responseBody, { status: res.status });
+  } catch (error) {
+    console.error("Proxy error:", error);
 
-"Content-Type":  "application/json",
-
-"x-lifi-api-key":
-
-"your-lifi-api-key", // Your API key from env
-
-},
-
-// If POST or other methods with body, forward the body as well
-
-body: ["POST", "PUT", "PATCH", "DELETE"].includes(req.method)
-
-?  await  req.text()
-
-:  undefined,
-
-});
-
-  
-
-// Build NextResponse from the proxied response
-
-const  responseBody  =  await  res.json(); // get response as text (can parse JSON if you want)
-
-  
-
-// Return response with status and headers from the original API
-
-return  NextResponse.json(responseBody, { status:  res.status });
-
-} catch (error) {
-
-console.error("Proxy error:", error);
-
-return  NextResponse.json({ error:  "Proxy failed" }, { status:  500 });
-
-}
-
+    return NextResponse.json({ error: "Proxy failed" }, { status: 500 });
+  }
 }
 ```
-
-
 
 Visit `http://localhost:3000` to view the app.
 
@@ -185,7 +142,6 @@ NEXT_PUBLIC_LIFI_API_KEY=your_api_key_here
 
 <img  src="https://vswap.io/images/phone/1.png" alt="V-swap" height="400" />
  <img  src="https://vswap.io/images/phone/2.png" alt="V-swap" height="400" />
-
 
 ---
 
@@ -229,5 +185,4 @@ For support or questions:
 ## 🌐 Live Demo
 
 > deployed at:  
-**[VSWAP](https://vswap.io)** <!-- Replace with actual link -->
-
+> **[VSWAP](https://vswap.io)** <!-- Replace with actual link -->

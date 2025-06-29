@@ -3,8 +3,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html,
+body {
+  min-height: 100%;
+  height: 100%;
+}
+
 @theme inline {
   --second-color: var(--second-c);
+  --card-hover-color: var(--card-hover-c);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -47,6 +55,7 @@
 
 :root {
   --second-c: oklch(0.9133 0 10.46);
+  --card-hover-c: oklch(0.86 0 none / 0.13);
 
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -84,6 +93,7 @@
 
 .dark {
   --second-c: oklch(0.2603 0 0);
+  --card-hover-c: oklch(23.929% 0.00003 271.152);
 
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -133,15 +143,12 @@
   border-radius: 10px;
 }
 
-
-
-
 .loader-start {
   width: 12px;
   height: 12px;
   border-radius: 50%;
   display: block;
-  margin:15px auto;
+  margin: 15px auto;
   position: relative;
   color: white;
   box-sizing: border-box;
@@ -150,18 +157,51 @@
 
 @keyframes animloader {
   0% {
-    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+    box-shadow:
+      14px 0 0 -2px,
+      38px 0 0 -2px,
+      -14px 0 0 -2px,
+      -38px 0 0 -2px;
   }
   25% {
-    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 2px;
+    box-shadow:
+      14px 0 0 -2px,
+      38px 0 0 -2px,
+      -14px 0 0 -2px,
+      -38px 0 0 2px;
   }
   50% {
-    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 2px,  -38px 0 0 -2px;
+    box-shadow:
+      14px 0 0 -2px,
+      38px 0 0 -2px,
+      -14px 0 0 2px,
+      -38px 0 0 -2px;
   }
   75% {
-    box-shadow: 14px 0 0 2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+    box-shadow:
+      14px 0 0 2px,
+      38px 0 0 -2px,
+      -14px 0 0 -2px,
+      -38px 0 0 -2px;
   }
   100% {
-    box-shadow: 14px 0 0 -2px,  38px 0 0 2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+    box-shadow:
+      14px 0 0 -2px,
+      38px 0 0 2px,
+      -14px 0 0 -2px,
+      -38px 0 0 -2px;
   }
+}
+
+.bg-hover:hover {
+  background-color: var(--card-hover-color);
+  transition: all 0.5s;
+}
+
+.all-tr {
+  transition: all 0.5s;
+}
+
+.scale-active:hover {
+  transform: scale(0.95);
 }

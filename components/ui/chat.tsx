@@ -85,7 +85,7 @@ export const ChatBox = ({
   const [screeHeight, setScreenHeight] = React.useState(0);
   const [screenWidth, setScreenWidth] = React.useState(0);
   const [chatId, setChatid] = React.useState<string | null>(null);
-  const config =useCustomLifiConfig()
+  const config = useCustomLifiConfig();
 
   const isMobile = React.useMemo(() => {
     return screenWidth < 725;
@@ -221,207 +221,218 @@ export const ChatBox = ({
       };
     }
   }, []);
-    
-
-
-
 
   return (
-  <AnimatePresence>
-    <ChatBoxStyle>
-    {isChatOpen &&  <motion.div
-           key={"Chat-key"}
-           initial={{ opacity: 0, y: 20, backdropFilter : "blur(30px)" }}
-            animate={{ opacity: 1, y: 0  ,  backdropFilter : "blur(0px)" }}
-            exit={{ opacity: 0, y: -20 ,   backdropFilter : "blur(30px)" }}
+    <AnimatePresence>
+      <ChatBoxStyle>
+        {isChatOpen && (
+          <motion.div
+            key={"Chat-key"}
+            initial={{ opacity: 0, y: 20, backdropFilter: "blur(30px)" }}
+            animate={{ opacity: 1, y: 0, backdropFilter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -20, backdropFilter: "blur(30px)" }}
             transition={{ duration: 0.3 }}
-        ref={chatWidgetRef}
-        style={{
-          right: !isMobile ? "30px" : 0,
-          bottom: !isMobile ? "130px" : 0,
-          top: !isMobile ? "" : 0,
-          left: !isMobile ? "" : 0,
-          height: !isMobile ? "" : "100%",
-          maxWidth: !isMobile ? 500 : "",
-        }}
-        className={`fixed flex   transition-05s w-full  z-[99999]  fade ${isChatOpen ? "fade-enter-active" : "fade-exit-active"}`}
-      >
-        <ChatWidgetContainer
-        className={cn("border", isMobile && "border-0")}
-          style={{
-            ...chatWidgetStyle,
-            height: chatWidgetStyle?.height ?? (!isMobile ? "" : "100%"),
-            borderRadius: chatWidgetStyle?.borderRadius ?? (isMobile ? 0 : 20),
-            paddingInline: chatWidgetStyle?.paddingInline ?? 0,
-            width: chatWidgetStyle?.width ?? "100%",
-            maxWidth: chatWidgetStyle?.maxWidth ?? (!isMobile ? 500 : ""),
-            display: chatWidgetStyle?.display ?? "flex",
-            flexDirection: chatWidgetStyle?.flexDirection ?? "column",
-            maxHeight:
-              chatWidgetStyle?.maxHeight ??
-              (!isMobile ? screeHeight * 0.75 : ""),
-          }}
-        >
-          <ChatAppBar
-            bg="transparent"
-            titleStyle={{
-              fontWeight: "bold",
+            ref={chatWidgetRef}
+            style={{
+              right: !isMobile ? "30px" : 0,
+              bottom: !isMobile ? "130px" : 0,
+              top: !isMobile ? "" : 0,
+              left: !isMobile ? "" : 0,
+              height: !isMobile ? "" : "100%",
+              maxWidth: !isMobile ? 500 : "",
             }}
-            
-            appBarContainerStyle={{
-              ...appBarStyle,
-              position: appBarStyle?.position ?? "sticky",
-              paddingInline: appBarStyle?.paddingInline ?? 20,
-              backgroundColor: appBarStyle?.backgroundColor ?? "transparent",
-              paddingBottom: appBarStyle?.paddingBottom ?? "10px",
-              borderBottom:
-                appBarStyle?.borderBottom ?? `1px solid ${bordersColor}`,
-            }}
-            leading={logo}
-            title={title}
-            actions={[
-              !isMobile ? (
-                <IconMaximize
-                  onClick={() => setScreenWidth(700)}
-                  className="touch-opacity"
-                />
-              ) : null,
-              <X
-                className="touch-opacity"
-                onClick={() => {
-                  if (typeof window != "undefined") {
-                    setScreenWidth(window.innerWidth);
-                  }
-                  toggleChatOpenState();
-                }}
-              />,
-            ]}
-          />
-
-          <div className="relative flex justify-center  px-[0px]  grow min-h-[0px]">
-            <ScrollArea
-              ref={messageScrollElement}
-              pb={50}
-              width={"100%"}
-              maxWidth={600}
-              maxHeight={isMobile ? screeHeight : screeHeight * 0.6}
-              height={"100%"}
-            >
-              {messages.length == 0 ? (
-                <div className="flex flex-col gap-[10px] justify-center items-center h-[150px]">
-                  <p className="m-[10px]">How can i help you ?</p>
-
-                  <div className="flex justify-center items-center gap-[10px]  flex-wrap ">
-                    {options.map((e) => {
-                      return (
-                        <Chip
-                          style={optionStyle}
-                          onClick={() => {
-                            const el = textInputRef.current;
-                            if (!el) return;
-                            el.innerHTML = "<div>" + e.title + "</div>";
-                            setInputText(e.title);
-
-                            setTimeout(() => {
-                              const el = buttonSendRef.current;
-                              if (!el) return;
-
-                              el.click();
-                            }, 500);
-                          }}
-                          text={e.title}
-                          icon={e.icon}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
-              ) : (
-                <div className="gap-[15px] px-[20px] py-[20px] flex flex-col">
-                  <AnimatePresence>
-                    {messages.map((e) => {
-                      return (
-                        <motion.div
-                          key={e.id}
-                          initial={{ opacity: 0, y: 20, backdropFilter : "blur(30px)" }}
-                          animate={{ opacity: 1, y: 0  ,  backdropFilter : "blur(0px)" }}
-                          exit={{ opacity: 0, y: -20 ,   backdropFilter : "blur(30px)" }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <MessageElementManager
-                            aiMsgStyle={aiMsgStyle ?? {}}
-                            userMsgStyle={userMsgStyle ?? {}}
-                            message={e}
-                          />
-                        </motion.div>
-                      );
-                    })}
-                  </AnimatePresence>
-                </div>
-              )}
-            </ScrollArea>
-          </div>
-          <div className="w-full  flex items-center justify-center ">
-            <div
+            className={`fixed flex   transition-05s w-full  z-[99999]  fade ${isChatOpen ? "fade-enter-active" : "fade-exit-active"}`}
+          >
+            <ChatWidgetContainer
+              className={cn("border", isMobile && "border-0")}
               style={{
-                maxWidth: 600,
-                width: "100%",
-                borderTop: `1px solid ${bordersColor}`,
+                ...chatWidgetStyle,
+                height: chatWidgetStyle?.height ?? (!isMobile ? "" : "100%"),
+                borderRadius:
+                  chatWidgetStyle?.borderRadius ?? (isMobile ? 0 : 20),
+                paddingInline: chatWidgetStyle?.paddingInline ?? 0,
+                width: chatWidgetStyle?.width ?? "100%",
+                maxWidth: chatWidgetStyle?.maxWidth ?? (!isMobile ? 500 : ""),
+                display: chatWidgetStyle?.display ?? "flex",
+                flexDirection: chatWidgetStyle?.flexDirection ?? "column",
+                maxHeight:
+                  chatWidgetStyle?.maxHeight ??
+                  (!isMobile ? screeHeight * 0.75 : ""),
               }}
-              className="flex w-full px-[20px] justify-center  items-center py-[10px]  space-x-2"
             >
-              <div
-                ref={textInputRef}
-                onPaste={(e) => {
-                  e.preventDefault();
-                  const text = e.clipboardData.getData("text/plain");
-                  document.execCommand("insertText", false, text);
+              <ChatAppBar
+                bg="transparent"
+                titleStyle={{
+                  fontWeight: "bold",
                 }}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    sendMessage();
-                  }
+                appBarContainerStyle={{
+                  ...appBarStyle,
+                  position: appBarStyle?.position ?? "sticky",
+                  paddingInline: appBarStyle?.paddingInline ?? 20,
+                  backgroundColor:
+                    appBarStyle?.backgroundColor ?? "transparent",
+                  paddingBottom: appBarStyle?.paddingBottom ?? "10px",
+                  borderBottom:
+                    appBarStyle?.borderBottom ?? `1px solid ${bordersColor}`,
                 }}
-                onInputCapture={(e) => {
-                  console.log(e.target);
+                leading={logo}
+                title={title}
+                actions={[
+                  !isMobile ? (
+                    <IconMaximize
+                      onClick={() => setScreenWidth(700)}
+                      className="touch-opacity"
+                    />
+                  ) : null,
+                  <X
+                    className="touch-opacity"
+                    onClick={() => {
+                      if (typeof window != "undefined") {
+                        setScreenWidth(window.innerWidth);
+                      }
+                      toggleChatOpenState();
+                    }}
+                  />,
+                ]}
+              />
 
-                  setInputText(
-                    e.currentTarget.textContent !== null
-                      ? e.currentTarget.textContent
-                      : "",
-                  );
-                }}
-                data-placeholder="Ask Anything..."
-                contentEditable={true}
-                style={{
-                  wordWrap: "break-word",
-                  whiteSpace: "pre-wrap",
-                  borderColor : config.themeColor,
-                }}
-                className={` contentEditableText ${inputText.trim().length == 0 ? "placeholder" : ""} relative`}
-              ></div>
+              <div className="relative flex justify-center  px-[0px]  grow min-h-[0px]">
+                <ScrollArea
+                  ref={messageScrollElement}
+                  pb={50}
+                  width={"100%"}
+                  maxWidth={600}
+                  maxHeight={isMobile ? screeHeight : screeHeight * 0.6}
+                  height={"100%"}
+                >
+                  {messages.length == 0 ? (
+                    <div className="flex flex-col gap-[10px] justify-center items-center h-[150px]">
+                      <p className="m-[10px]">How can i help you ?</p>
 
-              <button
-                onClick={() => {
-                  sendMessage();
-                }}
-                ref={buttonSendRef}
-                style={{
-                  width: 50,
-                  height: 40,
-                  borderRadius: "50%",
-                  backgroundColor: "white",
-                }}
-                className="touch-opacity flex justify-center items-center"
-              >
-                <SendHorizonal color="#121212" size={20} />
-              </button>
-            </div>
-          </div>
-        </ChatWidgetContainer>
-      </motion.div>}
-    </ChatBoxStyle>
+                      <div className="flex justify-center items-center gap-[10px]  flex-wrap ">
+                        {options.map((e) => {
+                          return (
+                            <Chip
+                              style={optionStyle}
+                              onClick={() => {
+                                const el = textInputRef.current;
+                                if (!el) return;
+                                el.innerHTML = "<div>" + e.title + "</div>";
+                                setInputText(e.title);
+
+                                setTimeout(() => {
+                                  const el = buttonSendRef.current;
+                                  if (!el) return;
+
+                                  el.click();
+                                }, 500);
+                              }}
+                              text={e.title}
+                              icon={e.icon}
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="gap-[15px] px-[20px] py-[20px] flex flex-col">
+                      <AnimatePresence>
+                        {messages.map((e) => {
+                          return (
+                            <motion.div
+                              key={e.id}
+                              initial={{
+                                opacity: 0,
+                                y: 20,
+                                backdropFilter: "blur(30px)",
+                              }}
+                              animate={{
+                                opacity: 1,
+                                y: 0,
+                                backdropFilter: "blur(0px)",
+                              }}
+                              exit={{
+                                opacity: 0,
+                                y: -20,
+                                backdropFilter: "blur(30px)",
+                              }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <MessageElementManager
+                                aiMsgStyle={aiMsgStyle ?? {}}
+                                userMsgStyle={userMsgStyle ?? {}}
+                                message={e}
+                              />
+                            </motion.div>
+                          );
+                        })}
+                      </AnimatePresence>
+                    </div>
+                  )}
+                </ScrollArea>
+              </div>
+              <div className="w-full  flex items-center justify-center ">
+                <div
+                  style={{
+                    maxWidth: 600,
+                    width: "100%",
+                    borderTop: `1px solid ${bordersColor}`,
+                  }}
+                  className="flex w-full px-[20px] justify-center  items-center py-[10px]  space-x-2"
+                >
+                  <div
+                    ref={textInputRef}
+                    onPaste={(e) => {
+                      e.preventDefault();
+                      const text = e.clipboardData.getData("text/plain");
+                      document.execCommand("insertText", false, text);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        sendMessage();
+                      }
+                    }}
+                    onInputCapture={(e) => {
+                      console.log(e.target);
+
+                      setInputText(
+                        e.currentTarget.textContent !== null
+                          ? e.currentTarget.textContent
+                          : "",
+                      );
+                    }}
+                    data-placeholder="Ask Anything..."
+                    contentEditable={true}
+                    style={{
+                      wordWrap: "break-word",
+                      whiteSpace: "pre-wrap",
+                      borderColor: config.themeColor,
+                    }}
+                    className={` contentEditableText ${inputText.trim().length == 0 ? "placeholder" : ""} relative`}
+                  ></div>
+
+                  <button
+                    onClick={() => {
+                      sendMessage();
+                    }}
+                    ref={buttonSendRef}
+                    style={{
+                      width: 50,
+                      height: 40,
+                      borderRadius: "50%",
+                      backgroundColor: "white",
+                    }}
+                    className="touch-opacity flex justify-center items-center"
+                  >
+                    <SendHorizonal color="#121212" size={20} />
+                  </button>
+                </div>
+              </div>
+            </ChatWidgetContainer>
+          </motion.div>
+        )}
+      </ChatBoxStyle>
     </AnimatePresence>
   );
 };

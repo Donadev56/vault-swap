@@ -17,14 +17,13 @@ import { AnimatePresence, motion } from "motion/react";
 import { FloatingButton, FloatingButtonContainer } from "./ui/floating-button";
 
 export const Header = ({
-  setChatOpen 
-} : 
-{
-  setChatOpen : (state : boolean)=> void
+  setChatOpen,
+}: {
+  setChatOpen: (state: boolean) => void;
 }) => {
   const { LifiConfig, colors, themeColor, setThemeColor } =
     useCustomLifiConfig();
-  const [isHover , setIsHover] = React.useState(false)
+  const [isHover, setIsHover] = React.useState(false);
 
   const options = [
     {
@@ -75,100 +74,113 @@ export const Header = ({
       })}
     </div>
   );
-  const optionsDesk =  <motion.div  initial="hidden"
-  animate="visible" variants={{
-    hidden : {opacity : 0, transition: { duration: 0.5 },backdropFilter : "blur(100px)", },
-    visible : {opacity : 1, transition: { duration: 0.5 }, backdropFilter : "blur(0px)", },
-    
-    
-  }} className="flex gap-4">
-                  {options.map((e) => {
-                    return (
-                      <button
-                      
-                        onClick={() => {
-                          if (e.onClick) {
-                            e.onClick();
-                          } else {
-                            window.open(e.path);
-                          }
-                        }}
-                        className="cursor-pointer hover:opacity-70 transition-all flex gap-2 items-center"
-                      >
-                    <e.icon />    {e.name}
-                      </button>
-                    );
-                  })}
-                </motion.div>
+  const optionsDesk = (
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {
+          opacity: 0,
+          transition: { duration: 0.5 },
+          backdropFilter: "blur(100px)",
+        },
+        visible: {
+          opacity: 1,
+          transition: { duration: 0.5 },
+          backdropFilter: "blur(0px)",
+        },
+      }}
+      className="flex gap-4"
+    >
+      {options.map((e) => {
+        return (
+          <button
+            onClick={() => {
+              if (e.onClick) {
+                e.onClick();
+              } else {
+                window.open(e.path);
+              }
+            }}
+            className="cursor-pointer hover:opacity-70 transition-all flex gap-2 items-center"
+          >
+            <e.icon /> {e.name}
+          </button>
+        );
+      })}
+    </motion.div>
+  );
 
   return (
     <>
-    <div onMouseLeave={()=> setIsHover(false)} onMouseEnter={()=> setIsHover(true)} >
-      <AppBar
-        leading={
-          <Logo
-            color={
-              (LifiConfig?.theme?.colorSchemes?.dark?.palette?.primary as any)
-                ?.main ?? undefined
-            }
-          />
-        }
-        actions={
-          isMobile
-            ? [<Menu onClick={toggleModalState} />]
-            : [
-              <AnimatePresence>
-                {isHover &&optionsDesk}
-              </AnimatePresence>
-              
-               ,
-                ColorsWidgetDesk,
-              ]
-        }
-        className="  truncate  z-50"
-        title={<div className="font-bold text-[16px]">Vault Swap</div>}
-      />
-      <BarrierOverlay isOpen={modalState} toggleModalState={()=> setModalState(false)} />
-
-      <ModalBottomSheet
-        className="bg-background rounded-t-2xl"
-        header={
-          <AppBar
-            fixed={false}
-            actions={[ColorsWidgetDesk]}
-            title="Back"
-            className="border-b-0 rounded-b-none  rounded-t-2xl my-1 mt-3 p-0 "
-            onClose={toggleModalState}
-          />
-        }
-        open={modalState}
+      <div
+        onMouseLeave={() => setIsHover(false)}
+        onMouseEnter={() => setIsHover(true)}
       >
-        <div className="w-full flex flex-col">
-          {options.map((e) => {
-            return (
-              <ListTitle
-                onClick={() => {
-                  if (e.onClick) {
-                    e.onClick();
-                  } else {
-                    window.open(e.path);
-                  }
-                }}
-                actions={e.actions}
-                leading={<e.icon />}
-                title={
-                  <div
-                    className="truncate
+        <AppBar
+          leading={
+            <Logo
+              color={
+                (LifiConfig?.theme?.colorSchemes?.dark?.palette?.primary as any)
+                  ?.main ?? undefined
+              }
+            />
+          }
+          actions={
+            isMobile
+              ? [<Menu onClick={toggleModalState} />]
+              : [
+                  <AnimatePresence>{isHover && optionsDesk}</AnimatePresence>,
+                  ColorsWidgetDesk,
+                ]
+          }
+          className="  truncate  z-50"
+          title={<div className="font-bold text-[16px]">Vault Swap</div>}
+        />
+        <BarrierOverlay
+          isOpen={modalState}
+          toggleModalState={() => setModalState(false)}
+        />
+
+        <ModalBottomSheet
+          className="bg-background rounded-t-2xl"
+          header={
+            <AppBar
+              fixed={false}
+              actions={[ColorsWidgetDesk]}
+              title="Back"
+              className="border-b-0 rounded-b-none  rounded-t-2xl my-1 mt-3 p-0 "
+              onClose={toggleModalState}
+            />
+          }
+          open={modalState}
+        >
+          <div className="w-full flex flex-col">
+            {options.map((e) => {
+              return (
+                <ListTitle
+                  onClick={() => {
+                    if (e.onClick) {
+                      e.onClick();
+                    } else {
+                      window.open(e.path);
+                    }
+                  }}
+                  actions={e.actions}
+                  leading={<e.icon />}
+                  title={
+                    <div
+                      className="truncate
               "
-                  >
-                    {e.name}
-                  </div>
-                }
-              />
-            );
-          })}
-        </div>
-      </ModalBottomSheet>
+                    >
+                      {e.name}
+                    </div>
+                  }
+                />
+              );
+            })}
+          </div>
+        </ModalBottomSheet>
       </div>
     </>
   );

@@ -1,7 +1,12 @@
-export const LoaderView = ()=>{
-    return <div style={{backgroundColor : "oklch(0.145 0 0)"}} className="grid h-full w-full  place-items-center  ">
+import { Logo } from "./logo";
 
-        <div className="loader-start" />
-            
+export const LoaderView = () => {
+  return (
+    <div
+      style={{ backgroundColor: "#ffffff", minHeight: "100%", height: "100%" }}
+      className="grid h-full min-h-full w-full place-items-center  "
+    >
+      <Logo color="black" size={100} />
     </div>
-}
+  );
+};
