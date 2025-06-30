@@ -3,13 +3,29 @@ import * as React from "react";
 import { MainActionButton } from "./main-action-button";
 import { useCustomLifiConfig } from "@/hooks/useCustomLifiConfig";
 import WalletIcon from "@mui/icons-material/Wallet";
+import useWeb3 from "../../hooks/useWeb3";
+import { Web3Utils } from "../../utils/web3-utils";
+import { toast } from "sonner";
 
 type ButtonProps = React.ComponentProps<typeof MuiButton>;
 
 const ConnectWalletButtonHeader = ({ ...props }: ButtonProps) => {
+  const toastError = (message: string) => toast.error(message);
+
+  const web3 = useWeb3();
+  async function connect() {
+    try {
+      await web3.connect();
+    } catch (error) {
+      toastError((error as any).toString());
+    }
+  }
   return (
-    <StButton {...props}>
-      <WalletIcon /> Connect Wallet
+    <StButton onClick={connect} {...props}>
+      <WalletIcon />{" "}
+      {web3.isConnected && web3.account.length > 0
+        ? Web3Utils.truncatedAddress(web3.account)
+        : "Connect Wallet"}
     </StButton>
   );
 };

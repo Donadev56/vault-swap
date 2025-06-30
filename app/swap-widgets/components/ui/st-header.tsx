@@ -6,10 +6,18 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 export const StHeader = ({
   title,
   onBack,
+  beforeBack,
 }: {
   title: React.ReactNode;
   onBack?: () => void;
+  beforeBack?: () => void;
 }) => {
+  function back() {
+    if (beforeBack) {
+      beforeBack();
+    }
+    NavigateBack();
+  }
   return (
     <StAppBar
       fixed={false}
@@ -17,7 +25,7 @@ export const StHeader = ({
       mainElementStyle={{ padding: 0 }}
       className="border-none p-0"
       leading={
-        <IconButton onClick={() => (onBack ? onBack() : NavigateBack())}>
+        <IconButton onClick={() => (onBack ? onBack() : back())}>
           <ArrowBackIosNewIcon style={{ width: 20 }} />
         </IconButton>
       }

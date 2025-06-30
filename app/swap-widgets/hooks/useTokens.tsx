@@ -13,7 +13,14 @@ import {
   getToken,
   Token,
   TokenAmount,
+  getTokenBalances,
 } from "@lifi/sdk";
+import { ZeroAddress } from "../utils/utils";
+import useWeb3 from "./useWeb3";
+import { TokenStateLess } from "../utils/st-token";
+import Web3 from "web3";
+import { RpcUrls } from "@/lib/utils";
+import { Web3Utils } from "../utils/web3-utils";
 
 // Type for Ethereum addresses
 export type EthAddress = `0x${string}`;
@@ -23,11 +30,8 @@ interface TokensContextType {
   tokens: TokensResponse["tokens"];
   getTokens: () => Promise<TokensResponse>;
   getToken: (tokenAddress: EthAddress, chainId: number) => Promise<Token>;
-  balanceOf: (
-    wallet: EthAddress,
-    tokenAddress: EthAddress,
-    chainId: number,
-  ) => Promise<TokenAmount | null>;
+  balanceOf: (wallet: EthAddress, token: Token) => Promise<TokenAmount | null>;
+  balancesOf: (wallet: EthAddress, tokens: Token[]) => Promise<TokenAmount[]>;
 }
 
 // Create the context
@@ -38,6 +42,7 @@ export const TokensProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [tokens, setTokens] = useState<TokensResponse>({ tokens: {} });
+  const web3 = useWeb3();
 
   useEffect(() => {
     init();
@@ -74,17 +79,57 @@ export const TokensProvider: React.FC<{ children: ReactNode }> = ({
       throw error;
     }
   };
+  const isNative = (address: string) =>
+    address.trim().toLowerCase() === ZeroAddress.trim().toLowerCase();
 
-  const getBalance = async (
+  async function getBalance(
     wallet: EthAddress,
-    tokenAddress: EthAddress,
-    chainId: number,
-  ) => {
+    token: Token,
+  ): Promise<TokenAmount> {
     try {
-      const token = await fetchToken(tokenAddress, chainId);
-      return await getTokenBalance(wallet, token);
+      const chainId = token.chainId;
+      const rpcUrls = RpcUrls[chainId];
+      if (rpcUrls) {
+        const available =
+          (await Web3Utils.findAvailableRpc(rpcUrls)) || rpcUrls[0];
+        const web3 = new Web3(available);
+        let balance = BigInt(0);
+
+        if (isNative(token.address)) {
+          balance = await web3.eth.getBalance(wallet);
+        } else {
+          const contract = new TokenStateLess(web3, token.address);
+          const tokenBalance = await contract.balanceOf(wallet);
+          if (tokenBalance) {
+            balance = tokenBalance;
+          }
+        }
+        return {
+          ...token,
+          amount: balance,
+        };
+      }
+      throw Error("An error has occured");
     } catch (error) {
-      console.error("Failed to get balance:", error);
+      console.error(error);
+      return {
+        ...token,
+        amount: BigInt(0),
+      };
+    }
+  }
+
+  const balancesOf = async (wallet: EthAddress, tokens: Token[]) => {
+    try {
+      const results = await Promise.all(
+        tokens.map((e) => {
+          return getBalance(wallet, e);
+        }),
+      );
+
+      return results;
+    } catch (error) {
+      console.error("Failed to get balances:", error);
       throw error;
     }
   };
@@ -94,6 +139,7 @@ export const TokensProvider: React.FC<{ children: ReactNode }> = ({
     getTokens: fetchTokens,
     getToken: fetchToken,
     balanceOf: getBalance,
+    balancesOf: balancesOf,
   };
 
   return (

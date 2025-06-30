@@ -72,7 +72,7 @@ You are the user's intelligent and secure trading guide through VaultSwap's swap
 Admin contact : t.me/@Opennode_tech
 `;
 
-export const RpcUrls = {
+export const RpcUrls: Partial<Record<number, string[]>> = {
   1: [
     "https://api.mycryptoapi.com/eth",
     "https://cloudflare-eth.com",

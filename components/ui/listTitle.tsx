@@ -38,7 +38,7 @@ const ListTitle = ({
       style={listTitleStyle}
       onClick={onClick}
       className={cn(
-        ` ${onClick ? "touch-opacity" : ""} flex text-color py-[15px] px-[12px]  gap-[10px] w-full bg-[varr(--second-color)]  flex-row `,
+        ` ${onClick ? "touch-opacity" : ""} flex text-color justify-between py-[15px] px-[12px]  gap-[10px] w-full bg-[varr(--second-color)]  flex-row `,
         className,
       )}
     >

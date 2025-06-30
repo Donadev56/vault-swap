@@ -14,6 +14,10 @@ import { TokensProvider } from "./hooks/useTokens";
 import { ModalProvider, useModal } from "./hooks/modal-context";
 import { CupertinoPage } from "@/components/ui/cupertino-page";
 import BarrierOverlay from "@/components/ui/barrier";
+import { Web3Provider } from "./hooks/useWeb3";
+import { useOrderManager } from "./hooks/order-manager";
+import { RpcUrls } from "@/lib/utils";
+import { Web3Utils } from "./utils/web3-utils";
 
 const indexes: { [key: string]: number } = {
   "#": 0,
@@ -80,15 +84,24 @@ const Page = () => {
 };
 
 export const MainWidget = () => {
+  const orderManager = useOrderManager();
+  const chainId = React.useMemo(
+    () => orderManager.fromChain?.id || 1,
+    [orderManager.fromChain?.id],
+  );
+  const rpcUrls = React.useMemo(() => RpcUrls[chainId] || [], [chainId]);
+
   return (
-    <ModalProvider>
-      <ChainsProvider>
-        <TokensProvider>
-          <TagRouteProvider main="#" indexes={indexes}>
-            <Page />
-          </TagRouteProvider>
-        </TokensProvider>
-      </ChainsProvider>
-    </ModalProvider>
+    <Web3Provider chainId={chainId} rpcUrls={rpcUrls}>
+      <ModalProvider>
+        <ChainsProvider>
+          <TokensProvider>
+            <TagRouteProvider main="#" indexes={indexes}>
+              <Page />
+            </TagRouteProvider>
+          </TokensProvider>
+        </ChainsProvider>
+      </ModalProvider>
+    </Web3Provider>
   );
 };

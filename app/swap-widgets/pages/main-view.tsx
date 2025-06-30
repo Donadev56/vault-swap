@@ -14,7 +14,8 @@ import React from "react";
 import { useCustomLifiConfig } from "@/hooks/useCustomLifiConfig";
 import WalletIcon from "@mui/icons-material/Wallet";
 import { MainContent } from "../components/main-content";
-
+import { useOrderManager } from "../hooks/order-manager";
+import { motion } from "framer-motion";
 type MainComponentProps = {
   useExternalWallet?: boolean;
 };
@@ -22,6 +23,20 @@ type MainComponentProps = {
 export const MainSwapView = () => {
   const [useExternalWallet, setUseExternalWallet] = React.useState(false);
   const lifiConfig = useCustomLifiConfig();
+  const orderManager = useOrderManager();
+
+  const tabs = [
+    {
+      name: "Swap",
+      value: "swap",
+      onClick: () => orderManager.setOrderType("swap"),
+    },
+    {
+      name: "Bridge",
+      value: "cross",
+      onClick: () => orderManager.setOrderType("cross"),
+    },
+  ];
   return (
     <Card className=" p-3  all-tr border-none">
       <StAppbar
@@ -40,27 +55,31 @@ export const MainSwapView = () => {
         title={""}
       />
       <main className="flex  all-tr  gap-1.5 w-full flex-col items-center ">
-        <Tabs className="flex gap-2 w-full " defaultValue="swap">
-          <TabsList style={{ height: 45 }} className="w-full shadow-none">
-            <TabsTrigger
-              style={{ height: 40 }}
-              className="shadow-none data-[state=active]:shadow-none"
-              value="swap"
-            >
-              Swap
-            </TabsTrigger>
-            <TabsTrigger
-              style={{ height: 40 }}
-              className="shadow-none data-[state=active]:shadow-none"
-              value="bridge"
-            >
-              Bridge
-            </TabsTrigger>
-          </TabsList>
+        <Tabs
+          className="flex gap-2 w-full "
+          defaultValue={orderManager.orderType}
+        >
+          <motion.div className="">
+            <TabsList style={{ height: 45 }} className="w-full shadow-none">
+              {tabs.map((e) => {
+                return (
+                  <TabsTrigger
+                    onClick={e.onClick}
+                    style={{ height: 40 }}
+                    className="shadow-none data-[state=active]:shadow-none"
+                    value={e.value}
+                  >
+                    {e.name}
+                  </TabsTrigger>
+                );
+              })}
+            </TabsList>
+          </motion.div>
+
           <TabsContent value="swap">
             <Swap useExternalWallet={useExternalWallet} />
           </TabsContent>
-          <TabsContent value="bridge">
+          <TabsContent value="cross">
             <Bridge useExternalWallet={useExternalWallet} />
           </TabsContent>
         </Tabs>

@@ -13,7 +13,6 @@ import React from "react";
 export function useOnViewMoreChain() {
   const modalState = useModal();
   const chains = useChains();
-  
 
   function onViewMore({
     onCancel,
@@ -22,19 +21,20 @@ export function useOnViewMoreChain() {
     onCancel?: () => void;
     onSelect?: (chain: ExtendedChain) => void;
   }) {
+    const ModalContent = () => {
+      const [query, setQuery] = React.useState("");
 
-    const ModalContent = ()=> { 
-    const [query, setQuery] = React.useState("");
+      const chainList = React.useMemo(() => {
+        const value = query.toLowerCase();
+        return chains.chains.filter(
+          (e) =>
+            e.name.toLowerCase().includes(value) ||
+            e.id.toString().includes(value),
+        );
+      }, [query, chains.chains]);
 
-    const chainList = React.useMemo(() => {
-    const value = query.toLowerCase();
-    return chains.chains.filter(
-      (e) =>
-        e.name.toLowerCase().includes(value) || e.id.toString().includes(value),
-    );
-  }, [query, chains.chains]);
-
- return <div className="flex w-full flex-col items-center">
+      return (
+        <div className="flex w-full flex-col items-center">
           <div className=" w-full">
             <SwapSearchInput
               value={query}
@@ -52,7 +52,7 @@ export function useOnViewMoreChain() {
                     margin: 0,
                     borderRadius: 16,
                     color: "var(--foreground)",
-                    width : "100%"
+                    width: "100%",
                   }}
                 >
                   <SwapListTitle
@@ -70,19 +70,22 @@ export function useOnViewMoreChain() {
             })}
           </div>
         </div>
-    }
+      );
+    };
     modalState.showModal({
       className: "max-h-[90%] min-h-[90%] overflow-y-hidden",
       containerStyle: {
         backgroundColor: "var(--background)",
-
       },
-    
-      header: <div className="px-3.5 pt-2 w-full"> <StHeader onBack={onCancel} title={"Select Chain"} /></div>,
 
-      children: (
-       <ModalContent/>
+      header: (
+        <div className="px-3.5 pt-2 w-full">
+          {" "}
+          <StHeader onBack={onCancel} title={"Select Chain"} />
+        </div>
       ),
+
+      children: <ModalContent />,
     });
   }
 

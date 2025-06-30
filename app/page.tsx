@@ -16,7 +16,7 @@ import { useCustomLifiConfig } from "@/hooks/useCustomLifiConfig";
 import { Sparkles } from "lucide-react";
 import React from "react";
 import { RpcUrls } from "@/lib/utils";
-import { createConfig } from "@lifi/sdk";
+import { createConfig, EVM } from "@lifi/sdk";
 import { IconButton } from "./swap-widgets/components/ui/buttons";
 import { AnimatePresence, motion } from "framer-motion";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -46,8 +46,10 @@ export default function Home() {
 
   createConfig({
     integrator: "donadev",
+    providers: [EVM({})],
     rpcUrls: RpcUrls,
     apiUrl: "/api/lifi-proxy",
+    debug: true,
   });
 
   return (

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Card } from "../../../components/ui/card";
 import { ChainCards } from "../components/ui/chains-card";
 import { useChains } from "../hooks/useChains";
-import { ExtendedChain } from "@lifi/sdk";
+import { Chain, ExtendedChain, Token, TokenAmount } from "@lifi/sdk";
 import { StHeader } from "../components/ui/st-header";
+import { formatUnits } from "ethers";
 
 import { SwapSearchInput } from "../components/ui/search-input";
 import { useTokens } from "../hooks/useTokens";
@@ -15,10 +16,26 @@ import { useModal } from "../hooks/modal-context";
 import { Button as MuiButton } from "@mui/material";
 import { useOnSelectToken } from "../hooks/useOnSelectToken";
 import { useOnViewMoreChain } from "../hooks/useOnViewMoreChain";
-const SelectChain = ({ title }: { title: React.ReactNode }) => {
+import { useOrderManager } from "../hooks/order-manager";
+import { SwapRoutes } from "../routes/routes";
+import { Button } from "../components/ui/buttons";
+import useWeb3 from "../hooks/useWeb3";
+import { NumberFormatterUtils } from "../utils/utils";
+const SelectChain = ({
+  title,
+  onContinue,
+  targetChain,
+  operationType,
+}: {
+  title: React.ReactNode;
+  onContinue: (token: Token, chain?: Chain) => void;
+  targetChain?: Chain;
+  operationType: number;
+}) => {
   const chains = useChains();
   const tokens = useTokens();
   const modalState = useModal();
+  const web3 = useWeb3();
   const onSelectToken = useOnSelectToken();
   const onViewMore = useOnViewMoreChain();
 
@@ -26,20 +43,28 @@ const SelectChain = ({ title }: { title: React.ReactNode }) => {
     React.useState<ExtendedChain | null>(null);
   const [query, setQuery] = React.useState("");
   const [chainList, setChainList] = React.useState<ExtendedChain[]>([]);
+  const chain = useMemo(() => selectedChain || targetChain, [selectedChain]);
+  const [currentTokens, setCurrentTokens] = React.useState<
+    Record<number, TokenAmount[] | Token[]>
+  >([]);
 
-  const tokenList = useMemo(() => {
-    if (!selectedChain) {
+  React.useEffect(() => {
+    setCurrentTokens(tokens.tokens);
+  }, [tokens.tokens]);
+
+  const tokenList: Token[] | TokenAmount[] = useMemo(() => {
+    const value = query.toLowerCase();
+    if (!chain) {
       return [];
     }
-    const finalTokens = tokens.tokens[selectedChain.id] || [];
-    const value = query.toLowerCase();
-    return finalTokens.filter(
+    const currentTokenList = currentTokens[chain.id] || [];
+    return currentTokenList.filter(
       (e) =>
         e.name.toLowerCase().includes(value) ||
         e.symbol.toLowerCase().includes(value) ||
         e.address.toLowerCase().includes(value),
     );
-  }, [tokens.tokens, selectedChain, query]);
+  }, [currentTokens, query, chain]);
 
   function close() {
     modalState.hideModal();
@@ -48,13 +73,37 @@ const SelectChain = ({ title }: { title: React.ReactNode }) => {
     const targetChain = chains.chains.find((e) => e.id === chain.id);
     if (targetChain) {
       setChainList((prev) => {
-        const newList = [...prev].filter((e)=> e.id !== targetChain.id);
-        return [targetChain, ...newList];
+        const filteredList = [...prev].filter((e) => e.id !== targetChain.id);
+        const newList = [targetChain, ...filteredList];
+        if (typeof localStorage != "undefined") {
+          localStorage.setItem("chainList", JSON.stringify(newList));
+        }
+        return newList;
       });
-      if (typeof localStorage != "undefined") {
-        localStorage.setItem("chainList", JSON.stringify(chainList));
-      }
+
       setSelectedChain(targetChain);
+    }
+  }
+
+  async function getTokenListbalance() {
+    try {
+      if (chain) {
+        const targetTokens = tokens.tokens[chain.id];
+        const chainId = chain.id;
+        const tokenBalances = await tokens.balancesOf(
+          web3.account as any,
+          targetTokens,
+        );
+        console.log(tokenBalances);
+        if (tokenBalances.length > 0) {
+          setCurrentTokens((prev) => {
+            return { ...prev, [chainId]: tokenBalances };
+          });
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      return [];
     }
   }
 
@@ -62,51 +111,59 @@ const SelectChain = ({ title }: { title: React.ReactNode }) => {
     setChainList(chains.chains);
   }, [chains.chains]);
 
-  const skeleton = Array.from({length : 10}).map((e) => {
-            return (
-              <MuiButton
-                style={{
-                  padding: 0,
-                  margin: 0,
-                  borderRadius: 16,
-                  color: "var(--foreground)",
-                }}
-              >
-                <SwapListTitle
-                  className="bg-hover cursor-pointer all-tr px-2 py-2 rounded-2xl"
-                  leading={
-                    <CryptoAvatar
-                      size={40}
-                      useSkeletonChain={true}
-                      useSkeletonToken={true}
-                      
-                    />
-                  }
-                  title={<div className="h-[20px] w-[90px] rounded-2xl bg-foreground/10"></div>}
-                  subTitle={<div className="h-[20px] w-[50px] rounded-2xl bg-[var(--card-hover-color)]"></div>}
-                />
-              </MuiButton>
-            );
-          })
+  React.useEffect(() => {
+    // getTokenListbalance();
+  }, [chain?.id]);
+  const skeleton = Array.from({ length: 10 }).map((e) => {
+    return (
+      <MuiButton
+        style={{
+          padding: 0,
+          margin: 0,
+          borderRadius: 16,
+          color: "var(--foreground)",
+        }}
+      >
+        <SwapListTitle
+          className="bg-hover cursor-pointer all-tr px-2 py-2 rounded-2xl"
+          leading={
+            <CryptoAvatar
+              size={40}
+              useSkeletonChain={true}
+              useSkeletonToken={true}
+            />
+          }
+          title={
+            <div className="h-[20px] w-[90px] rounded-2xl bg-foreground/10"></div>
+          }
+          subTitle={
+            <div className="h-[20px] w-[50px] rounded-2xl bg-[var(--card-hover-color)]"></div>
+          }
+        />
+      </MuiButton>
+    );
+  });
 
   return (
     <Card className=" p-3  all-tr border-none">
-      <StHeader title={selectedChain?.name ?? title} />
-      <ChainCards
-        onViewMore={() => {
-          onViewMore({
-            onCancel: close,
-            onSelect(chain) {
-              setChain(chain);
-              close();
-            },
-          });
-        }}
-        chains={chainList}
-        selectedChain={selectedChain as any}
-        setSelectedChain={setSelectedChain}
-      />
-      {selectedChain && (
+      <StHeader title={chain?.name ?? title} />
+      {!targetChain && (
+        <ChainCards
+          onViewMore={() => {
+            onViewMore({
+              onCancel: close,
+              onSelect(chain) {
+                setChain(chain);
+                close();
+              },
+            });
+          }}
+          chains={chainList}
+          selectedChain={chain as any}
+          setSelectedChain={setSelectedChain}
+        />
+      )}
+      {chain && (
         <SwapSearchInput
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -115,55 +172,141 @@ const SelectChain = ({ title }: { title: React.ReactNode }) => {
         />
       )}
       <div className="flex max-h-[300px] overflow-y-scroll overflow-x-hidden w-full flex-col gap-2.5 ">
-        {tokenList.length > 0  ?
-          tokenList.map((e) => {
-            return (
-              <MuiButton
-                style={{
-                  padding: 0,
-                  margin: 0,
-                  borderRadius: 16,
-                  color: "var(--foreground)",
-                }}
-              >
-                <SwapListTitle
-                  onClick={() => {
-                    if (selectedChain) {
-                      onSelectToken(e, selectedChain, {
-                        onCancel: () => close(),
-                        onContinue() {
-                          console.log("Selected Token :", e);
-                          close();
-                        },
-                      });
-                    }
+        {tokenList.length > 0
+          ? tokenList.map((e) => {
+              const amountBigInt = (e as TokenAmount).amount || 0;
+              const amountUi = formatUnits(amountBigInt, e.decimals);
+
+              return (
+                <MuiButton
+                  style={{
+                    padding: 0,
+                    margin: 0,
+                    borderRadius: 16,
+                    color: "var(--foreground)",
                   }}
-                  className="bg-hover cursor-pointer all-tr px-2 py-2 rounded-2xl"
-                  leading={
-                    <CryptoAvatar
-                      size={40}
-                      token={e}
-                      useSkeletonChain={!selectedChain}
-                      chain={selectedChain || undefined}
-                    />
-                  }
-                  title={<div className="">{e.name}</div>}
-                  subTitle={<div className="">{e.symbol}</div>}
-                />
-              </MuiButton>
-            );
-          }) : skeleton}
+                >
+                  <SwapListTitle
+                    onClick={() => {
+                      if (chain) {
+                        onSelectToken(e, chain as any, {
+                          onCancel: () => close(),
+                          onContinue() {
+                            onContinue(e, chain);
+                            close();
+                          },
+                        });
+                      }
+                    }}
+                    className="bg-hover cursor-pointer all-tr px-2 py-2 rounded-2xl"
+                    leading={
+                      <CryptoAvatar
+                        size={40}
+                        token={e}
+                        useSkeletonChain={!chain}
+                        chain={chain as any}
+                      />
+                    }
+                    title={<div className="font-[600]">{e.symbol}</div>}
+                    subTitle={<div className="">{e.name}</div>}
+                    actions={[
+                      (e as any).amount && (
+                        <div className="flex w-full justify-end flex-col">
+                          <div className="font-bold flex w-full justify-end">
+                            {NumberFormatterUtils.formatNumber(
+                              Number(amountUi),
+                            )}
+                          </div>
+
+                          <div className="flex justify-end w-full">
+                            {NumberFormatterUtils.formatPriceUsd(
+                              Number(amountUi) * Number(e.priceUSD),
+                            )}
+                          </div>
+                        </div>
+                      ),
+                    ]}
+                  />
+                </MuiButton>
+              );
+            })
+          : skeleton}
       </div>
     </Card>
   );
 };
 
 const SelectChainFrom = () => {
-  return <SelectChain title={"Exchange From"} />;
+  const orderManager = useOrderManager();
+  function onContinue(token: Token, chain?: Chain) {
+    if (
+      orderManager.toToken &&
+      orderManager.toChain &&
+      chain &&
+      orderManager.toToken.address.trim().toLowerCase() ==
+        token.address.trim().toLowerCase() &&
+      orderManager.toChain?.id === chain?.id
+    ) {
+      orderManager.setFromToken(orderManager.toToken);
+      orderManager.setFromChain(orderManager.toChain);
+
+      orderManager.setToChain(undefined);
+      orderManager.setToToken(undefined);
+    } else {
+      if (chain) {
+        orderManager.setFromChain(chain);
+      }
+      orderManager.setFromToken(token);
+    }
+
+    window.location.hash = SwapRoutes.main;
+  }
+  return (
+    <SelectChain
+      operationType={0}
+      title={"Exchange From"}
+      onContinue={onContinue}
+    />
+  );
 };
 
 const SelectChainTo = () => {
-  return <SelectChain title={"Exchange To"} />;
+  const orderManager = useOrderManager();
+  const isBridge = orderManager.orderType === "cross";
+
+  function onContinue(token: Token, chain?: Chain) {
+    const targetChain = !isBridge ? orderManager.fromChain : chain;
+    if (targetChain) {
+      orderManager.setToChain(targetChain);
+    }
+    orderManager.setToToken(token);
+    window.location.hash = SwapRoutes.main;
+  }
+
+  if (!isBridge && !orderManager.fromChain) {
+    return (
+      <div className="flex flex-col  w-full items-center  gap-1 ">
+        <StHeader title={"Back"} />
+        <div className="flex gap-2 py-2 flex-col items-center">
+          <div>Select Chain and Token From</div>
+
+          <a href={SwapRoutes.selectChainFrom}>
+            {" "}
+            <Button>Exchange From</Button>
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <SelectChain
+      title={"Exchange To"}
+      targetChain={isBridge ? undefined : orderManager.fromChain}
+      onContinue={onContinue}
+      operationType={1}
+    />
+  );
 };
 
 export { SelectChainTo, SelectChainFrom, SelectChain };

@@ -6,14 +6,15 @@ export const SwapListTitle = ({ ...props }: ListTitleType) => {
     <ListTitle
       {...props}
       leftStyle={{
-        maxWidth: "85%",
+        maxWidth: "70%",
         justifyContent: "start",
       }}
       titleStyle={{
         maxWidth: "100%",
+        display: "flex",
       }}
       mainTextStyle={{
-        maxWidth: "70%",
+        maxWidth: "100%",
       }}
       subtitleStyle={{
         maxWidth: "100%",
@@ -23,7 +24,10 @@ export const SwapListTitle = ({ ...props }: ListTitleType) => {
       }}
       actionsStyle={{
         maxWidth: "20%",
+        minWidth: "20%",
         width: "20%",
+        display: "flex",
+        justifyContent: "end",
       }}
     />
   );

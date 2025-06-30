@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { CustomConfigProvider } from "@/hooks/useCustomLifiConfig";
 import { ThemeProvider } from "next-themes";
+import { OrderManagerProvider } from "./swap-widgets/hooks/order-manager";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +36,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${inter.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <CustomConfigProvider>{children}</CustomConfigProvider>
+          <OrderManagerProvider>
+            <CustomConfigProvider>{children}</CustomConfigProvider>
+          </OrderManagerProvider>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

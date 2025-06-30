@@ -7,16 +7,13 @@ import React, {
 } from "react";
 import { ChainType, ExtendedChain, getChains } from "@lifi/sdk";
 
-// Define the shape of the context
 interface ChainsContextType {
   chains: ExtendedChain[];
   getChains: () => Promise<ExtendedChain[]>;
 }
 
-// Create context with default undefined
 const ChainsContext = createContext<ChainsContextType | undefined>(undefined);
 
-// Provider component
 export const ChainsProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
