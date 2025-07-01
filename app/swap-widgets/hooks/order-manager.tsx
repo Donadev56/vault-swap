@@ -1,5 +1,5 @@
 "use client";
-import { Chain, Token, Route } from "@lifi/sdk";
+import { Chain, Token, Route, getRoutes, RoutesRequest } from "@lifi/sdk";
 import React, {
   createContext,
   useContext,
@@ -7,9 +7,15 @@ import React, {
   ReactNode,
   useEffect,
 } from "react";
+import { useTokens } from "./useTokens";
+import { parseUnits } from "ethers";
+import useWeb3 from "./useWeb3";
+import { NumberFormatterUtils } from "../utils/utils";
 
 interface OrderManagerContextType {
   orderType: "swap" | "cross";
+  amount: string;
+  setAmount: (value: string) => void;
   orderId: string;
   destination: string | undefined;
   fromToken: Token | undefined;
@@ -29,8 +35,13 @@ interface OrderManagerContextType {
   setOrderType: (type: "swap" | "cross") => void;
   toggleTokens: () => void;
   tokensFilled: () => boolean;
+  fetchRoutes: (account: string) => Promise<Route[] | undefined>;
+  routeLoading: boolean;
+  isBridge: () => boolean;
 }
 const initialState: OrderManagerContextType = {
+  amount: "",
+  setAmount: () => {},
   orderType: "swap",
   orderId: " ",
   RouteSteps: [],
@@ -51,6 +62,9 @@ const initialState: OrderManagerContextType = {
   setOrderType: () => {},
   toggleTokens: () => {},
   tokensFilled: () => false,
+  fetchRoutes: () => undefined as any,
+  isBridge: () => false,
+  routeLoading: false,
 };
 const OrderManagerContext =
   createContext<OrderManagerContextType>(initialState);
@@ -60,7 +74,7 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [currentStep, setCurrentStep] = useState();
   const [steps, setSteps] = useState([]);
-  const [route, setRoute] = useState<any>();
+  const [route, setRoute] = useState<Route>();
   const [destination, setDestination] = useState<string | undefined>();
   const [fromToken, setFromToken] = useState<Token | undefined>();
   const [toToken, setToToken] = useState<Token | undefined>();
@@ -68,7 +82,8 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
   const [toChain, setToChain] = useState<Chain | undefined>();
   const [orderType, setOrderType] = useState<"swap" | "cross">("swap");
   const [orderId, setOrderId] = useState("");
-
+  const [amount, setAmount] = useState("");
+  const [routeLoading, setRouteLoading] = useState(false);
   function setOrderRoute(route: any) {
     setRoute(route);
   }
@@ -85,8 +100,50 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
     setToToken(tokenFrom);
   }
 
+  async function fetchRoutes(account: string) {
+    try {
+      setRouteLoading(true);
+      if (!tokensFilled()) {
+        throw Error("Token from and to must be selected");
+      }
+      if (!amount.trim()) {
+        throw Error("Amount not specified");
+      }
+      const toAddress = destination || account;
+      if (fromChain && toChain && toToken && fromToken) {
+        const params: RoutesRequest = {
+          fromChainId: fromChain.id,
+          toChainId: toChain.id,
+          fromAmount: NumberFormatterUtils.toWei(
+            amount,
+            fromToken.decimals,
+          ).toString(),
+          fromTokenAddress: fromToken.address,
+          toTokenAddress: toToken.address,
+          fromAddress: account,
+          toAddress: toAddress,
+        };
+        const routes = await getRoutes(params, {
+          integrator: "donadev",
+          fee: 0.025,
+          order: "CHEAPEST",
+        } as any);
+        if (routes) {
+          return routes.routes;
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      throw error;
+    } finally {
+      setRouteLoading(false);
+    }
+  }
   function tokensFilled() {
     return !!toToken && !!fromToken;
+  }
+  function isBridge() {
+    return orderType === "cross";
   }
 
   useEffect(() => {
@@ -112,6 +169,8 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
   }, [fromChain, toChain, toToken, fromToken]);
 
   const state: OrderManagerContextType = {
+    isBridge,
+    routeLoading,
     toggleTokens,
     orderId,
     orderType,
@@ -132,6 +191,9 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
     setToChain,
     setFromChain,
     tokensFilled,
+    amount,
+    setAmount,
+    fetchRoutes,
   };
 
   return (

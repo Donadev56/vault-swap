@@ -4,6 +4,7 @@ import numeral from "numeral";
 import chainData from "../../../lib/chains.json";
 import { Token } from "@lifi/sdk";
 import lodash from "lodash";
+import { formatUnits } from "ethers";
 export class NumberFormatterUtils {
   static formatPriceUsd(value: number): string {
     if (value > 1) return numeral(value).format("0.00");
@@ -20,6 +21,25 @@ export class NumberFormatterUtils {
 
   static isNumeric(str: string) {
     return !Array.isArray(str) && Number(str) - parseFloat(str) + 1 >= 0;
+  }
+  static toWei(value: string, decimals: number) {
+    return BigInt(Number(value) * 10 ** decimals);
+  }
+  static toEth(value: bigint, decimals: number) {
+    return NumberFormatterUtils.formatNumber(
+      Number(formatUnits(value, decimals)),
+    );
+  }
+
+  static calculatePercent(oldValue: number, newValue: number) {
+    const percent = ((newValue - oldValue) / oldValue) * 100;
+    return percent.toFixed(2);
+  }
+  static calculatePriceBytoken(
+    priceOfTokenOne: number,
+    priceOfTokenTwo: number,
+  ) {
+    return;
   }
 }
 

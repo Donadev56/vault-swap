@@ -21,8 +21,6 @@ type MainComponentProps = {
 };
 
 export const MainSwapView = () => {
-  const [useExternalWallet, setUseExternalWallet] = React.useState(false);
-  const lifiConfig = useCustomLifiConfig();
   const orderManager = useOrderManager();
 
   const tabs = [
@@ -77,34 +75,12 @@ export const MainSwapView = () => {
           </motion.div>
 
           <TabsContent value="swap">
-            <Swap useExternalWallet={useExternalWallet} />
+            <Swap />
           </TabsContent>
           <TabsContent value="cross">
-            <Bridge useExternalWallet={useExternalWallet} />
+            <Bridge />
           </TabsContent>
         </Tabs>
-        <div className="flex mt-2 w-full max-w-[100%] gap-2">
-          <ConnectButton />
-
-          <MainActionButton
-            onClick={() => setUseExternalWallet(!useExternalWallet)}
-            style={{
-              backgroundColor: !useExternalWallet
-                ? `${lifiConfig.themeColor}20`
-                : lifiConfig.themeColor,
-              color: !useExternalWallet
-                ? lifiConfig.themeColor
-                : "var(--background)",
-              maxWidth: 48,
-              minWidth: 48,
-              maxHeight: 48,
-              minHeight: 48,
-              borderRadius: 10,
-            }}
-          >
-            <WalletIcon />
-          </MainActionButton>
-        </div>
       </main>
     </Card>
   );
@@ -113,7 +89,7 @@ export const MainSwapView = () => {
 const Swap = ({ useExternalWallet }: MainComponentProps) => {
   return (
     <div>
-      <MainContent useExternalWallet={useExternalWallet} />
+      <MainContent />
     </div>
   );
 };
@@ -121,7 +97,7 @@ const Swap = ({ useExternalWallet }: MainComponentProps) => {
 const Bridge = ({ useExternalWallet }: MainComponentProps) => {
   return (
     <div>
-      <MainContent bridge useExternalWallet={useExternalWallet} />
+      <MainContent bridge />
     </div>
   );
 };

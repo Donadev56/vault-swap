@@ -9,18 +9,18 @@ import {
   ChainType,
   TokensResponse,
   getTokens,
-  getTokenBalance,
   getToken,
   Token,
   TokenAmount,
-  getTokenBalances,
 } from "@lifi/sdk";
-import { ZeroAddress } from "../utils/utils";
+import { NumberFormatterUtils, ZeroAddress } from "../utils/utils";
 import useWeb3 from "./useWeb3";
 import { TokenStateLess } from "../utils/st-token";
 import Web3 from "web3";
 import { RpcUrls } from "@/lib/utils";
 import { Web3Utils } from "../utils/web3-utils";
+import { useOrderManager } from "./order-manager";
+import { parseUnits } from "ethers";
 
 // Type for Ethereum addresses
 export type EthAddress = `0x${string}`;
@@ -32,6 +32,7 @@ interface TokensContextType {
   getToken: (tokenAddress: EthAddress, chainId: number) => Promise<Token>;
   balanceOf: (wallet: EthAddress, token: Token) => Promise<TokenAmount | null>;
   balancesOf: (wallet: EthAddress, tokens: Token[]) => Promise<TokenAmount[]>;
+  isBalanceSufficient: (amount: string) => Promise<boolean | undefined>;
 }
 
 // Create the context
@@ -43,6 +44,7 @@ export const TokensProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [tokens, setTokens] = useState<TokensResponse>({ tokens: {} });
   const web3 = useWeb3();
+  const orderManager = useOrderManager();
 
   useEffect(() => {
     init();
@@ -133,13 +135,36 @@ export const TokensProvider: React.FC<{ children: ReactNode }> = ({
       throw error;
     }
   };
-
+  async function isBalanceSufficient(amount: string) {
+    try {
+      if (amount === "0") {
+        return true;
+      }
+      const balance = await getBalance(
+        web3.account as any,
+        orderManager?.fromToken as any,
+      );
+      const amountBigInt = NumberFormatterUtils.toWei(
+        amount,
+        orderManager.fromToken?.decimals ?? 0,
+      );
+      if (balance && (balance.amount || BigInt(0)) < amountBigInt) {
+        return false;
+      } else {
+        return true;
+      }
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
   const contextValue: TokensContextType = {
     tokens: tokens.tokens,
     getTokens: fetchTokens,
     getToken: fetchToken,
     balanceOf: getBalance,
     balancesOf: balancesOf,
+    isBalanceSufficient,
   };
 
   return (

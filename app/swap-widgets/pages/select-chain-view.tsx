@@ -4,7 +4,7 @@ import React, { useEffect, useMemo } from "react";
 import { Card } from "../../../components/ui/card";
 import { ChainCards } from "../components/ui/chains-card";
 import { useChains } from "../hooks/useChains";
-import { Chain, ExtendedChain, Token, TokenAmount } from "@lifi/sdk";
+import { Chain, ExtendedChain, Route, Token, TokenAmount } from "@lifi/sdk";
 import { StHeader } from "../components/ui/st-header";
 import { formatUnits } from "ethers";
 
@@ -82,28 +82,6 @@ const SelectChain = ({
       });
 
       setSelectedChain(targetChain);
-    }
-  }
-
-  async function getTokenListbalance() {
-    try {
-      if (chain) {
-        const targetTokens = tokens.tokens[chain.id];
-        const chainId = chain.id;
-        const tokenBalances = await tokens.balancesOf(
-          web3.account as any,
-          targetTokens,
-        );
-        console.log(tokenBalances);
-        if (tokenBalances.length > 0) {
-          setCurrentTokens((prev) => {
-            return { ...prev, [chainId]: tokenBalances };
-          });
-        }
-      }
-    } catch (error) {
-      console.error(error);
-      return [];
     }
   }
 
