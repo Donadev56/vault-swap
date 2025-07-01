@@ -9,7 +9,7 @@
     "lint": "next lint",
     "format": "pnpm exec prettier . --write",
     "f": "pnpm format",
-    "p": "git status && git add . && git commit -m 'update' && git push"
+    "p": "git add . && git diff --cached --quiet || git commit -m 'update'; git push"
   },
   "dependencies": {
     "@bigmi/client": "^0.3.1",
