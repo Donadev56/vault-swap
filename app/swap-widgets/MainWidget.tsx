@@ -18,6 +18,7 @@ import { Web3Provider } from "./hooks/useWeb3";
 import { useOrderManager } from "./hooks/order-manager";
 import { RpcUrls } from "@/lib/utils";
 import { Web3Utils } from "./utils/web3-utils";
+import { TransactionView } from "./components/transaction-view";
 
 const indexes: { [key: string]: number } = {
   "#": 0,
@@ -25,6 +26,7 @@ const indexes: { [key: string]: number } = {
   "#selectChainTo": 1,
   "#selectChainFrom": 2,
   "#settings": 3,
+  "#transactionView": 4,
 };
 
 const Page = () => {
@@ -36,6 +38,7 @@ const Page = () => {
     SelectChainTo(),
     SelectChainFrom(),
     SwapSetting(),
+    TransactionView(),
   ];
   const pageVariants = {
     initial: { x: 50 },

@@ -1,3 +1,5 @@
+import { RpcUrls } from "@/lib/utils";
+
 export class Web3Utils {
   static truncatedAddress = (address: string): string => {
     if (this.isAddressValid(address)) {
@@ -44,6 +46,19 @@ export class Web3Utils {
     } catch (error) {
       console.error(error);
       return rpcUrls[0];
+    }
+  }
+
+  static async getRpcUrlofchain(chainId: number) {
+    const rpcUrls = RpcUrls[chainId];
+    try {
+      if (rpcUrls) {
+        return (await this.findAvailableRpc(rpcUrls)) ?? "";
+      }
+
+      return "";
+    } catch (error) {
+      return rpcUrls ? rpcUrls[0] : "";
     }
   }
 }

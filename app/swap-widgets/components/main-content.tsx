@@ -6,7 +6,7 @@ import {
   SwapInputCard,
   SwapInputContent,
   SwapInputTitle,
-} from "../components/ui/sawp-input";
+} from "./ui/swap-input";
 import WalletIcon from "@mui/icons-material/Wallet";
 import { SwapRoutes } from "../routes/routes";
 import { useOrderManager } from "../hooks/order-manager";
@@ -28,6 +28,11 @@ import { ConnectButton, IconButton } from "./ui/buttons";
 import { MainActionButton } from "./ui/main-action-button";
 import { Button } from "./ui/buttons";
 import { title } from "process";
+import { order } from "@mui/system";
+import { useOnReviewSwap } from "../hooks/on-review-swap";
+import { Navigate } from "../routes/routes-utils";
+import { useModal } from "../hooks/modal-context";
+import { useOnStartSwap } from "../hooks/on-start-swap";
 
 export const MainContent = ({ bridge = false }: { bridge?: boolean }) => {
   const orderManager = useOrderManager();
@@ -46,6 +51,8 @@ export const MainContent = ({ bridge = false }: { bridge?: boolean }) => {
   const requestIdRef = useRef("");
   const [error, setError] = React.useState<{ title: string; desc: string }>();
   const [routes, setRoutes] = React.useState<Route[]>([]);
+  const onReviewSwap = useOnReviewSwap();
+  const onStartSwap = useOnStartSwap();
   const isFromTokenAvailable = !!orderManager.fromToken;
   const isFromChainAvailable = !!orderManager.fromChain;
   const isToTokenAvailable = !!orderManager.toToken;
@@ -67,11 +74,20 @@ export const MainContent = ({ bridge = false }: { bridge?: boolean }) => {
 
   const getRoutes = async () => {
     try {
+      if (!web3.isConnected) {
+        throw Error("Not Connected to Web3");
+      }
       const newId = uuid();
       requestIdRef.current = newId;
       const isSufficient = await tokens.isBalanceSufficient(amount);
       if (!isSufficient) {
+        setError({
+          title: "Amount exceeds the balance",
+          desc: "You don't have enough funds to complete the transaction.",
+        });
         return;
+      } else {
+        setError(undefined);
       }
       const results = await orderManager.fetchRoutes(web3.account);
       if (results) {
@@ -87,6 +103,7 @@ export const MainContent = ({ bridge = false }: { bridge?: boolean }) => {
           });
           return;
         }
+        setError(undefined);
         setRoutes(results);
         return;
       }
@@ -97,43 +114,25 @@ export const MainContent = ({ bridge = false }: { bridge?: boolean }) => {
     }
   };
   React.useEffect(() => {
-    if (orderManager.tokensFilled() && Number(amount) > 0 && !error) {
+    if (orderManager.tokensFilled() && Number(amount) > 0) {
       getRoutes();
     }
-  }, [amount]);
+  }, [amount, orderManager.destination]);
   useEffect(() => {
     if (orderManager.fromToken !== undefined) {
       getBalance();
     }
   }, [orderManager.fromToken]);
 
-  useEffect(() => {
-    async function checkBalance() {
-      try {
-        const isSufficient = await tokens.isBalanceSufficient(amount);
-
-        if (!isSufficient) {
-          setError({
-            title: "Amount exceeds the balance",
-            desc: "You don't have enough funds to complete the transaction.",
-          });
-        } else {
-          setError(undefined);
-        }
-      } catch (error) {
-        console.error(error);
-        setError(undefined);
-      }
-    }
-    if (orderManager.tokensFilled()) {
-      checkBalance();
-    }
-  }, [amount]);
-
   function getButtonState() {
-    let state: { title: string; onClick: () => any | undefined } = {
+    let state: {
+      title: string;
+      onClick: () => any | undefined;
+      onSubmit: () => any | undefined;
+    } = {
       title: "Connect Wallet",
-      onClick: web3.connect,
+      onClick: connect,
+      onSubmit: undefined as any,
     };
     if (!web3.isConnected) {
       return state;
@@ -147,12 +146,24 @@ export const MainContent = ({ bridge = false }: { bridge?: boolean }) => {
             onClick: getRoutes,
           };
         } else {
-          return { title: "Review Swap", onClick: console.log("Review Swap") };
+          return { title: "Review Swap", onSubmit: onReviewSwap };
         }
       }
     }
   }
+  async function connect() {
+    try {
+      await web3.connect();
+    } catch (error) {
+      toast.error((error as any).toString());
+    }
+  }
 
+  function onContinue() {
+    orderManager.createOrder();
+    console.log(orderManager.orderId);
+    onStartSwap();
+  }
   return (
     <div className="flex flex-col gap-3">
       <div className="relative flex  w-full justify-center flex-col gap-2">
@@ -359,7 +370,15 @@ export const MainContent = ({ bridge = false }: { bridge?: boolean }) => {
         className="flex mt-2 w-full max-w-[100%] gap-2"
       >
         <Button
+          style={{ fontWeight: "bold", fontSize: "17px" }}
           onClick={() => {
+            const onSubmit = getButtonState().onSubmit;
+            if (onSubmit) {
+              orderManager.setRoute(routes[0]);
+              onSubmit({
+                onContinue: onContinue,
+              });
+            }
             const onClick = getButtonState().onClick;
             if (onClick) {
               onClick();
@@ -371,7 +390,12 @@ export const MainContent = ({ bridge = false }: { bridge?: boolean }) => {
 
         <IconButton
           size={45 as any}
-          onClick={() => setUseExternalWallet(!useExternalWallet)}
+          onClick={() => {
+            if (useExternalWallet) {
+              orderManager.setDestination(undefined);
+            }
+            setUseExternalWallet(!useExternalWallet);
+          }}
           style={{
             backgroundColor: !useExternalWallet
               ? `${config.themeColor}20`

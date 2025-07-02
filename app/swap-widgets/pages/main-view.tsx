@@ -86,7 +86,7 @@ export const MainSwapView = () => {
   );
 };
 
-const Swap = ({ useExternalWallet }: MainComponentProps) => {
+const Swap = () => {
   return (
     <div>
       <MainContent />
@@ -94,7 +94,7 @@ const Swap = ({ useExternalWallet }: MainComponentProps) => {
   );
 };
 
-const Bridge = ({ useExternalWallet }: MainComponentProps) => {
+const Bridge = () => {
   return (
     <div>
       <MainContent bridge />

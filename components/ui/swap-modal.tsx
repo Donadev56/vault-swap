@@ -10,10 +10,11 @@ export interface ModalSheetType {
   containerStyle?: React.CSSProperties;
   children?: React.ReactNode;
   className?: string;
-  ContentTopSpace?: string;
   barrierStyle?: React.CSSProperties;
   header?: React.ReactNode;
   open: boolean;
+  canScroll?: boolean;
+  mainContentStyle?: React.CSSProperties;
 }
 
 const ModalBottomSheet = ({
@@ -22,10 +23,11 @@ const ModalBottomSheet = ({
   className,
   header,
   open,
-  ContentTopSpace = "0px",
+  canScroll = false,
+  mainContentStyle,
 }: ModalSheetType) => {
   React.useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "scroll";
+    if (!canScroll) document.body.style.overflow = open ? "hidden" : "scroll";
   }, [open]);
 
   return (
@@ -45,7 +47,7 @@ const ModalBottomSheet = ({
             </div>
 
             <div
-              style={{ marginTop: ContentTopSpace }}
+              style={mainContentStyle}
               className="flex flex-col w-full justify-center items-center p-[15px]"
             >
               {children ?? "Add Children to build Modal"}

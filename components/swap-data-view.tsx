@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { TbBrandTorchain } from "react-icons/tb";
 import { IoSearchSharp } from "react-icons/io5";
+import { RouteExtended } from "@lifi/sdk";
 
 export const SwapDataView = () => {
   const config = useCustomLifiConfig();

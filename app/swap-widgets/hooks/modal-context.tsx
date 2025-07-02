@@ -30,13 +30,19 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   const showModal = (content: ModalContentProps) => {
-    if (isOpen) {
-      setIsOpen(false);
-    }
+    let openTime = 50;
+    setIsOpen((isOpen) => {
+      if (isOpen) {
+        openTime = 350;
+        hideModal();
+      }
+      return false;
+    });
     setModalContent(content);
+
     setTimeout(() => {
       setIsOpen(true);
-    }, 50);
+    }, openTime);
   };
 
   const hideModal = () => {

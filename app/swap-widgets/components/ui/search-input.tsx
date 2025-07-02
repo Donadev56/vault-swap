@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { SwapInputCard, SwapInputContent } from "./sawp-input";
+import { SwapInputCard, SwapInputContent } from "./swap-input";
 import { cn } from "@/lib/utils";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";

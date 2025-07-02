@@ -1,6 +1,7 @@
 import Web3 from "web3";
 import { TokenAbi } from "./st-token-abi";
 import TransactionSigner from "./signer";
+import { TransactionRequest } from "@lifi/sdk";
 
 export class TokenStateLess {
   public contractAddress: string;
@@ -47,7 +48,7 @@ export class TokenStateLess {
     try {
       const contract = this.createContract();
       const allowed = await contract.methods.allowance(owner, spender).call();
-      return Number(allowed) / 1e18;
+      return allowed as any as bigint;
     } catch (error) {
       this.throwError(error);
     }
@@ -87,6 +88,53 @@ export class TokenStateFull extends TokenStateLess {
         return response.message;
       }
       this.throwError(response.message);
+    } catch (error) {
+      this.throwError(error);
+    }
+  }
+
+  async createApprovalTransaction({
+    address,
+    amount = 100000 * 1e18,
+  }: {
+    amount?: number;
+    address: string;
+  }) {
+    try {
+      const signer = new TransactionSigner(this.web3);
+
+      const contract = this.createContract();
+      const ethereum = window.ethereum;
+      if (!ethereum) {
+        throw new Error("Metamask not detected");
+      }
+
+      const accounts: string[] = await ethereum.request({
+        method: "eth_accounts",
+      });
+      const account = accounts[0];
+      const txData = contract!.methods.approve(address, amount).encodeABI();
+
+      const params = {
+        from: account,
+        to: this.contractAddress,
+        value: 0,
+        data: txData,
+      };
+
+      const estimatedGas = await (this.web3!.eth as any).estimateGas(params);
+
+      console.log("estimate fees: ", estimatedGas);
+      const gasLimit = Math.floor(Number(estimatedGas));
+
+      console.log("Estimated gas:", estimatedGas);
+      console.log("Adjusted gas limit:", gasLimit);
+
+      return {
+        ...params,
+        value: this.web3.utils.toHex(params.value),
+        gas: this.web3.utils.toHex(gasLimit),
+      } as TransactionRequest;
     } catch (error) {
       this.throwError(error);
     }

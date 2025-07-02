@@ -36,7 +36,7 @@ const ModalBottomSheet = ({
           ...containerStyle,
           maxHeight: containerStyle?.maxHeight,
         }}
-        className={` ${className} ${open ? ElementOpen : ElementClose} z-1200 all-transition fixed bottom-0 left-0 right-0`}
+        className={` ${className} ${open ? ElementOpen : ElementClose} z-[1300] all-transition fixed bottom-0 left-0 right-0`}
       >
         <div className="sheet-body relative  gap-[10px] w-full h-full  flex flex-col justify-center items-center ">
           <div className="header flex-col justify-center items-center flex gap-[10px] w-full ">

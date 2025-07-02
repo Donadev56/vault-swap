@@ -19,17 +19,15 @@ export const StHeader = ({
     NavigateBack();
   }
   return (
-    <StAppBar
-      fixed={false}
-      leadingStyle={{ minWidth: "80%" }}
-      mainElementStyle={{ padding: 0 }}
-      className="border-none p-0"
-      leading={
+    <div className="flex w-full p-2 items-center ">
+      <div>
         <IconButton onClick={() => (onBack ? onBack() : back())}>
           <ArrowBackIosNewIcon style={{ width: 20 }} />
         </IconButton>
-      }
-      title={<div className="font-bold">{title}</div>}
-    />
+      </div>
+      <div className="w-full ml-[-40px] text-[18px] font-bold text-foreground/80 justify-center flex items-center">
+        {title}
+      </div>
+    </div>
   );
 };

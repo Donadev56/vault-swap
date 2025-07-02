@@ -1,3 +1,4 @@
+import { TransactionRequest } from "@lifi/sdk";
 import Web3 from "web3";
 
 export interface ResponseMessage {
@@ -69,6 +70,57 @@ class TransactionSigner {
       return {
         success: false,
         message: typeof error == "string" ? error : JSON.stringify(error),
+      };
+    }
+  };
+
+  sendTransaction = async (
+    data: TransactionRequest,
+  ): Promise<ResponseMessage> => {
+    try {
+      console.log(data.chainId);
+      const ethereum = this.ethereum;
+      if (!ethereum) {
+        throw Error("MetaMask not found");
+      }
+      const params = {
+        ...data,
+      };
+
+      let receipt;
+      try {
+        receipt = await ethereum.request({
+          method: "eth_sendTransaction",
+          params: [params],
+        });
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+
+      if (receipt) {
+        if (typeof receipt == "string") {
+          return { success: true, message: receipt };
+        } else {
+          return { success: true, message: receipt.transactionHash };
+        }
+      }
+      throw Error("Transaction Failed");
+    } catch (error) {
+      console.error(error);
+      let errorMessage = "";
+      if (typeof error == "object" && JSON.stringify(error)) {
+        errorMessage = JSON.stringify(error);
+      } else {
+        if (typeof error === "string") {
+          errorMessage = error;
+        } else {
+          errorMessage = (error as any).toString();
+        }
+      }
+      return {
+        success: false,
+        message: errorMessage,
       };
     }
   };

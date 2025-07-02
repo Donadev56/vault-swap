@@ -6,7 +6,7 @@ import {
   SwapInputCard,
   SwapInputContent,
   SwapInputTitle,
-} from "./ui/sawp-input";
+} from "./ui/swap-input";
 import { CryptoAvatar } from "./ui/crypto-avatar";
 import { NumberFormatterUtils } from "../utils/utils";
 import { useCustomLifiConfig } from "@/hooks/useCustomLifiConfig";
@@ -94,7 +94,7 @@ const RouteCard = ({
                 alt=""
               />{" "}
               <div className="truncate text-[12px] max-w-full">
-                {route.steps[0]?.toolDetails.name}
+                {route.steps[0]?.toolDetails?.name?.split(" ")[0]}
               </div>
             </div>
           </div>
