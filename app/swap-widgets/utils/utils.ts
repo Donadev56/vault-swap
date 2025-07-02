@@ -7,16 +7,17 @@ import lodash from "lodash";
 import { formatUnits } from "ethers";
 export class NumberFormatterUtils {
   static formatPriceUsd(value: number): string {
-    if (value > 1) return numeral(value).format("0.00");
-    if (value > 0.01) return numeral(value).format("0.[000000]");
-    if (value > 0.0001) return numeral(value).format("0.[00000000]");
-    return numeral(value).format("0,0.00"); // fallback
+    return NumberFormatterUtils.formatSmallAmount(value);
   }
   static formatNumber(value: number): string {
+    return NumberFormatterUtils.formatSmallAmount(value);
+  }
+
+  static formatSmallAmount(value: number): string {
     if (value > 1) return numeral(value).format("0.00");
     if (value > 0.01) return numeral(value).format("0.[000000]");
     if (value > 0.0001) return numeral(value).format("0.[00000000]");
-    return numeral(value).format("0,0.00"); // fallback
+    return numeral(value).format("0.[000000000000]");
   }
 
   static isNumeric(str: string) {
@@ -26,7 +27,7 @@ export class NumberFormatterUtils {
     return BigInt(Number(value) * 10 ** decimals);
   }
   static toEth(value: bigint, decimals: number) {
-    return NumberFormatterUtils.formatNumber(
+    return NumberFormatterUtils.formatSmallAmount(
       Number(formatUnits(value, decimals)),
     );
   }
@@ -51,6 +52,20 @@ export function explore(token: Token, chainId: number) {
         `${chain.result.data.chain.explorers[0].url}/address/${token.address}`,
       );
     }
+  }
+}
+export function exploreTx(hash: string, chainId: number) {
+  const chain = chainData.find((e) => e.result.data.chain.chainId === chainId);
+  if (chain) {
+    if (typeof window != "undefined") {
+      window.open(`${chain.result.data.chain.explorers[0].url}/tx/${hash}`);
+    }
+  }
+}
+
+export function exploreLifiTx(hash: string) {
+  if (typeof window != "undefined") {
+    window.open(`https://scan.li.fi/tx/${hash}`);
   }
 }
 

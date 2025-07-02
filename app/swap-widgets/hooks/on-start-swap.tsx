@@ -39,6 +39,7 @@ export function useOnStartSwap() {
       },
       mainContentStyle: {
         height: "100%",
+        overflowY: "scroll",
       },
       children: <TransactionView />,
     });

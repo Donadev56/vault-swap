@@ -3,7 +3,7 @@ import ThemeToggle from "./ui/theme-toogle";
 import { StHeader } from "./ui/st-header";
 import useWeb3 from "../hooks/useWeb3";
 
-import React from "react";
+import React, { useState } from "react";
 import { OrderStep, Status, useOrderManager } from "../hooks/order-manager";
 import { toast } from "sonner";
 import { useModal } from "../hooks/modal-context";
@@ -12,21 +12,31 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { FaCircleCheck } from "react-icons/fa6";
 import { BsInfoCircle } from "react-icons/bs";
 import { VscError } from "react-icons/vsc";
 import { CiNoWaitingSign } from "react-icons/ci";
 import { FeeDetails } from "./fees-details";
-import { Blur, Scale } from "./ui/animated-components";
+import { Blur, Scale, TranslateY } from "./ui/animated-components";
 import { Button } from "./ui/buttons";
+import { CryptoAvatar } from "./ui/crypto-avatar";
+import {
+  explore,
+  exploreLifiTx,
+  exploreTx,
+  NumberFormatterUtils,
+} from "../utils/utils";
+import { FaCircleCheck } from "react-icons/fa6";
+import { useCustomLifiConfig } from "@/hooks/useCustomLifiConfig";
+import { CiCircleCheck } from "react-icons/ci";
 
 export const TransactionView = () => {
   const web3 = useWeb3();
   const manager = useOrderManager();
   const modal = useModal();
-  console.log(manager.trExeState);
-  console.log(manager.trGeneratorState);
+  const [isSuccess, setIsSuccess] = React.useState(false);
+
   const isInit = React.useRef(false);
+  const config = useCustomLifiConfig();
 
   const generateRoutes = async () => {
     try {
@@ -39,7 +49,10 @@ export const TransactionView = () => {
   };
   const executeRoutes = async () => {
     try {
-      await manager.executeRouteSteps();
+      const result = await manager.executeRouteSteps();
+      if (result) {
+        setIsSuccess(result);
+      }
     } catch (error) {
       console.error(error);
       toast.error((error as any).toString());
@@ -50,6 +63,10 @@ export const TransactionView = () => {
       return;
     }
     isInit.current = true;
+    if (!manager.orderId) {
+      console.warn("Bad state");
+      return;
+    }
 
     generateRoutes();
   }, []);
@@ -64,11 +81,12 @@ export const TransactionView = () => {
     const executionState = manager.trExeState;
     const creationState = manager.trGeneratorState;
     const id = manager.orderId;
-    if (!id) {
+
+    if (isSuccess) {
+      state = { label: "Back", onClick: modal.hideModal };
       return state;
     }
-    if (executionState && executionState[id] === Status.Done) {
-      state = { label: "Back", onClick: () => modal.hideModal };
+    if (!id) {
       return state;
     }
     if (!executionState && !creationState) {
@@ -130,8 +148,57 @@ export const TransactionView = () => {
                   );
                 })}
               </div>
+              <TranslateY condition={isSuccess} className="">
+                <div className="flex gap-1 rounded-2xl my-2 p-4 border w-full flex-col items-center justify-center">
+                  <div className="flex gap-3 w=full items-center py-2">
+                    <CryptoAvatar
+                      size={50}
+                      token={manager.toToken}
+                      chain={manager.toChain as any}
+                    />{" "}
+                    <div className="font-extrabold text-foreground text-[22px]">
+                      {NumberFormatterUtils.toEth(
+                        BigInt(manager?.route?.toAmount ?? 0),
+                        manager?.route?.toToken?.decimals || 0,
+                      )}
+                    </div>
+                  </div>
 
-              <div className="flex gap-2 my-2 w-full items-center justify-center"></div>
+                  <div className="flex w-full py-1 items-center justify-between ">
+                    <div className="w-full flex items-center justify-center">
+                      <CiCircleCheck size={50} color="#00b472" />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-2 items-center w-full">
+                    <Button
+                      style={{ width: "100%" }}
+                      onClick={() =>
+                        exploreTx(
+                          manager.lastTransactionHash ?? "",
+                          manager.fromChain?.id ?? 0,
+                        )
+                      }
+                      className=""
+                    >
+                      View on Blockchain
+                    </Button>
+                    <Button
+                      style={{
+                        width: "100%",
+                        backgroundColor: `${config.themeColor}20`,
+                        color: config.themeColor,
+                      }}
+                      onClick={() =>
+                        exploreLifiTx(manager.lastTransactionHash ?? "")
+                      }
+                      className=""
+                    >
+                      View on Lifi
+                    </Button>
+                  </div>
+                </div>
+              </TranslateY>
               <div className="w-full my-9">
                 {
                   <Scale key={"fee-details"} condition={!!manager.route}>

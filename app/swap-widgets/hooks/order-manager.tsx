@@ -67,7 +67,7 @@ interface OrderManagerContextType {
   fetchRoutes: (account: string) => Promise<Route[] | undefined>;
   routeLoading: boolean;
   isBridge: () => boolean;
-  executeRouteSteps: () => Promise<void>;
+  executeRouteSteps: () => Promise<boolean>;
   generateSteps: () => Promise<void>;
   createOrder: () => void;
   cleanOrder: () => void;
@@ -157,7 +157,19 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
     setToChain(chainFrom);
     setToToken(tokenFrom);
   }
-
+  const changeNetwork = async (chainId: number) => {
+    try {
+      const ethereum = window.ethereum;
+      if (ethereum) {
+        await ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: `0x${chainId.toString(16)}` }],
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   async function fetchRoutes(account: string) {
     try {
       setRouteLoading(true);
@@ -363,6 +375,10 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
         console.log("Sending transactiom :", eachStep.name + "\n");
         updateStepState(eachStep, Status.Pending);
         console.log("Sending transaction for :", eachStep.id);
+        const targetChainId = eachStep.transactionData.chainId;
+        if (targetChainId) {
+          await changeNetwork(targetChainId);
+        }
         const response = await signer.sendTransaction(eachStep.transactionData);
         if (response.success) {
           hash = response.message;
@@ -401,6 +417,8 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
       console.log("All steps executed successfully");
 
       updateTrExeState(Status.Done, orderId);
+
+      return true;
     } catch (error) {
       console.log(error);
       if (orderId) {

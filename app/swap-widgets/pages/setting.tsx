@@ -77,9 +77,9 @@ const RpcListViewer = () => {
           {expended && (
             <motion.div
               key={String(expended)}
-              initial={{ height: "0%", opacity: "0" }}
+              initial={{ height: "1%", opacity: "0.1" }}
               animate={{ height: "", opacity: "1" }}
-              exit={{ height: "0%", opacity: "1" }}
+              exit={{ height: "1%", opacity: "0.1" }}
               transition={{ duration: 0.5 }}
               className="flex w-full p-2 flex-col gap-2"
             >

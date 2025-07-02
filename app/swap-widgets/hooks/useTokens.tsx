@@ -106,10 +106,11 @@ export const TokensProvider: React.FC<{ children: ReactNode }> = ({
             balance = tokenBalance;
           }
         }
-        return {
+        const balanceData = {
           ...token,
           amount: balance,
         };
+        return balanceData;
       }
       throw Error("An error has occured");
     } catch (error) {

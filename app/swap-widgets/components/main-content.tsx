@@ -122,7 +122,12 @@ export const MainContent = ({ bridge = false }: { bridge?: boolean }) => {
     if (orderManager.fromToken !== undefined) {
       getBalance();
     }
-  }, [orderManager.fromToken]);
+  }, [
+    orderManager.fromToken,
+    orderManager.orderId,
+    orderManager.orderSteps,
+    orderManager.routeLoading,
+  ]);
 
   function getButtonState() {
     let state: {

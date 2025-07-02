@@ -43,6 +43,7 @@ export const Web3Provider = ({
   const [accounts, setAccounts] = useState<string[]>([]);
   const [isConnected, setIsConnected] = useState(false);
   const [availableRpc, setAvailableRpc] = React.useState<string>(rpcUrls[0]);
+  console.log("Available provider :", availableRpc);
 
   const web3 = useMemo(() => new Web3(availableRpc), [availableRpc]);
 
