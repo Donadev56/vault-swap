@@ -23,17 +23,21 @@ import {
   explore,
   exploreLifiTx,
   exploreTx,
+  formatError,
   NumberFormatterUtils,
 } from "../utils/utils";
 import { FaCircleCheck } from "react-icons/fa6";
 import { useCustomLifiConfig } from "@/hooks/useCustomLifiConfig";
 import { CiCircleCheck } from "react-icons/ci";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircleIcon } from "lucide-react";
 
 export const TransactionView = () => {
   const web3 = useWeb3();
   const manager = useOrderManager();
   const modal = useModal();
   const [isSuccess, setIsSuccess] = React.useState(false);
+  const [error, setError] = React.useState<{ title: string; desc: string }>();
 
   const isInit = React.useRef(false);
   const config = useCustomLifiConfig();
@@ -44,7 +48,10 @@ export const TransactionView = () => {
       await executeRoutes();
     } catch (error) {
       console.error(error);
-      toast.error((error as any).toString());
+      setError({
+        title: "Transaction error",
+        desc: formatError(error),
+      });
     }
   };
   const executeRoutes = async () => {
@@ -148,6 +155,42 @@ export const TransactionView = () => {
                   );
                 })}
               </div>
+              <TranslateY condition={!!error}>
+                <Alert
+                  className="overflow-hidden max-w-full max-h-[270px]"
+                  variant="destructive"
+                >
+                  <AlertCircleIcon />
+                  <AlertTitle>Potential way to solve the problem</AlertTitle>
+                  <AlertDescription>
+                    <ul>
+                      <li>Try increasing the exchange amount</li>
+                      <li>Try to see if the amount can cover the gas costs</li>
+                      <li>Make sure to approve token spend requests</li>
+                      <li>Check that you are on the correct network</li>
+                    </ul>
+
+                    <p>
+                      Contact us via telegram{" "}
+                      <a href="https://t.me/Opennode_tech">
+                        @Opennode_tech
+                      </a>{" "}
+                    </p>
+                  </AlertDescription>
+                </Alert>
+              </TranslateY>
+              <TranslateY condition={!!error}>
+                <Alert
+                  className="overflow-hidden max-w-full max-h-[300px]"
+                  variant="destructive"
+                >
+                  <AlertCircleIcon />
+                  <AlertTitle>{error && error.title}</AlertTitle>
+                  {error && error.desc && (
+                    <AlertDescription>{error.desc}</AlertDescription>
+                  )}
+                </Alert>
+              </TranslateY>
               <TranslateY condition={isSuccess} className="">
                 <div className="flex gap-1 rounded-2xl my-2 p-4 border w-full flex-col items-center justify-center">
                   <div className="flex gap-3 w=full items-center py-2">

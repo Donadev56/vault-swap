@@ -24,6 +24,7 @@ import { Web3Utils } from "../utils/web3-utils";
 import { TokenStateFull } from "../utils/st-token";
 import { v4 } from "uuid";
 import { steps } from "framer-motion";
+import { SaveTransaction } from "@/app/server-actions/transaction-history";
 
 export enum Status {
   Done = "Done",
@@ -37,6 +38,8 @@ export type OrderStep = {
   transactionData: TransactionRequest;
   status: Status;
   id: string;
+  route?: Route;
+  hash?: string;
 };
 
 interface OrderManagerContextType {
@@ -146,6 +149,10 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
     setOrderId(undefined);
   }
 
+  function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
   function toggleTokens() {
     const tokenTo = toToken;
     const tokenFrom = fromToken;
@@ -194,8 +201,8 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
           toAddress: toAddress,
         };
         const routes = await getRoutes(params, {
-          integrator: "donadev",
-          fee: 0.025,
+          integrator: "vswap.io",
+          fee: 0.005,
           order: "CHEAPEST",
         } as any);
         if (routes) {
@@ -274,15 +281,17 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
 
       const rpc = await Web3Utils.getRpcUrlofchain(route.fromChainId);
       const web3 = new Web3(rpc);
-      console.log({ stepslen: route.steps.length });
+      let approvalRequestAdded = false;
 
-      for (const eachStep of route.steps) {
+      let generatedSteps: OrderStep[] = [];
+
+      for (let i = 0; i < route.steps.length; i++) {
+        const eachStep = route.steps[i];
         const step = await getStepTransaction(eachStep);
         const isNative =
           route.fromToken.address.trim().toLowerCase() ===
           ZeroAddress.trim().toLowerCase();
-        console.log({ isNative });
-        if (!isNative) {
+        if (!isNative && !approvalRequestAdded) {
           const approvalAddress = step.estimate.approvalAddress;
           const tokenContract = new TokenStateFull(web3, fromToken.address);
           const allowance = await tokenContract.allowance(
@@ -307,9 +316,11 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
                 transactionData: approvalRequest,
                 id: v4(),
                 status: Status.Pending,
+                route,
               };
               console.log(newOrderStep);
-              setOrderSteps((prev) => [...prev, newOrderStep]);
+              generatedSteps.push(newOrderStep);
+              approvalRequestAdded = true;
             }
           }
         }
@@ -323,16 +334,24 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
           status: Status.Pending,
           transactionData: request,
           id: v4(),
+          route: route,
         };
 
-        setOrderSteps((prev) => [...prev, newOrderStep]);
-        updateTrGenState(Status.Done, orderId);
+        generatedSteps.push(newOrderStep);
       }
+
+      if (generatedSteps.length == 0) {
+        throw Error("No Step Generated \n Try again");
+      }
+      setOrderSteps(generatedSteps);
+      console.log({ generatedSteps });
+      updateTrGenState(Status.Done, orderId);
     } catch (error) {
       console.error(error);
       if (orderId) {
         updateTrGenState(Status.Failed, orderId);
       }
+      throw error;
     }
   }
 
@@ -357,6 +376,7 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
       const web3 = new Web3(rpc);
       const signer = new TransactionSigner(web3);
       let targetSteps: OrderStep[] = [];
+
       setOrderSteps((prev) => {
         if (prev) {
           targetSteps = [...prev];
@@ -365,7 +385,12 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
       });
 
       console.log({ targetSteps });
-      for (const eachStep of targetSteps) {
+
+      if (targetSteps.length == 0) {
+        throw Error("No Step Generated\n Try Again");
+      }
+      for (let i = 0; i < targetSteps.length; i++) {
+        const eachStep = targetSteps[i];
         if (eachStep.status === Status.Done) {
           console.log("Transaction done");
           continue;
@@ -389,10 +414,16 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
         if (hash) {
           console.log("Transaction hash :", hash);
           let status: BigInt | undefined;
+          await sleep(1000);
+
           do {
-            const response = await web3.eth.getTransactionReceipt(hash);
-            if (response) {
-              status = response.status;
+            try {
+              const response = await web3.eth.getTransactionReceipt(hash);
+              if (response) {
+                status = response.status;
+              }
+            } catch (error) {
+              console.error(error);
             }
 
             console.log(`Transaction status for ${hash}:`, status);
@@ -403,8 +434,16 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
             updateStepState(eachStep, Status.Failed);
             throw Error("Execution failed for step :" + eachStep.id);
           } else {
+            if (i === targetSteps.length - 1) {
+              try {
+                SaveTransaction({ ...eachStep, hash: hash });
+              } catch (error) {
+                console.error(error);
+              }
+            }
             setlastTransactionHash(hash);
             console.log("transaction executed :", eachStep.id);
+
             updateStepState(eachStep, Status.Done);
           }
         } else {

@@ -171,3 +171,100 @@ export type NativeToken = {
 export type ChainsResponse = {
   chains: Chain[];
 };
+
+interface ToolDetails {
+  key: string;
+  name: string;
+  logoURI: string;
+  webUrl?: string;
+}
+
+interface IncludedStep {
+  tool: string;
+  toolDetails: ToolDetails;
+  fromAmount: string;
+  fromToken: Token;
+  toToken: Token;
+  toAmount: string;
+  bridgedAmount: string | null;
+}
+
+interface TransferAction {
+  txHash: string;
+  txLink: string;
+  token: Token;
+  chainId: number;
+  gasPrice: string;
+  gasUsed: string;
+  gasToken: Token;
+  gasAmount: string;
+  gasAmountUSD: string;
+  amountUSD: string;
+  value: string;
+  includedSteps?: IncludedStep[];
+  amount: string;
+  timestamp: number;
+}
+
+interface Metadata {
+  integrator: string;
+}
+
+interface Transfer {
+  transactionId: string;
+  sending: TransferAction;
+  receiving: TransferAction;
+  lifiExplorerLink: string;
+  bridgeExplorerLink?: string;
+  fromAddress: string;
+  toAddress: string;
+  tool: string;
+  status: string;
+  substatus: string;
+  substatusMessage: string;
+  metadata: Metadata;
+  feeCosts: FeeCost[];
+}
+
+interface TransfersData {
+  transfers: Transfer[];
+}
+
+type FeeBalancesResponse = {
+  integratorId: string;
+  feeBalances: FeeBalance[];
+};
+
+type FeeBalance = {
+  chainId: number;
+  tokenBalances: TokenBalance[];
+};
+
+type TokenBalance = {
+  token: TokenInfo;
+  amount: string;
+  amountUsd: string;
+};
+
+type TokenInfo = {
+  address: string;
+  chainId: number;
+  symbol: string;
+  decimals: number;
+  name: string;
+  coinKey: string;
+  logoURI: string;
+  priceUSD: string;
+};
+
+export {
+  type Transfer,
+  type TransferAction,
+  type TransfersData,
+  type Metadata,
+  type IncludedStep,
+  type TokenInfo,
+  type TokenBalance,
+  type FeeBalance,
+  type FeeBalancesResponse,
+};

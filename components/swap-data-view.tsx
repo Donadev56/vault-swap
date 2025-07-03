@@ -11,10 +11,11 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import { TbBrandTorchain } from "react-icons/tb";
 import { IoSearchSharp } from "react-icons/io5";
 import { RouteExtended } from "@lifi/sdk";
+import { OrderStep } from "@/app/swap-widgets/hooks/order-manager";
 
 export const SwapDataView = () => {
   const config = useCustomLifiConfig();
-  const [transactions, setTransactions] = React.useState<RouteExtended[]>([]);
+  const [transactions, setTransactions] = React.useState<OrderStep[]>([]);
   const [chains, setChains] = React.useState<ChainsResponse>({ chains: [] });
   const [chainQuery, setChainQuery] = React.useState("");
   const [trxQuery, setTrxQuery] = React.useState("");
@@ -22,6 +23,7 @@ export const SwapDataView = () => {
 
   const filteredChains = React.useMemo(() => {
     const query = chainQuery.toLowerCase();
+    const config = useCustomLifiConfig();
 
     if (!query.trim()) {
       return chains.chains;
@@ -45,10 +47,10 @@ export const SwapDataView = () => {
 
     const found = transactions.filter(
       (e) =>
-        e?.fromAddress?.toLowerCase().includes(query) ||
-        e?.toAddress?.toLowerCase().includes(query) ||
-        e.toToken.name.toLowerCase().includes(query) ||
-        e.fromToken.name.toLowerCase().includes(query),
+        e?.route?.fromAddress?.toLowerCase().includes(query) ||
+        e?.route?.toAddress?.toLowerCase().includes(query) ||
+        e?.route?.toToken.name.toLowerCase().includes(query) ||
+        e?.route?.fromToken.name.toLowerCase().includes(query),
     );
     return found;
   }, [transactions, trxQuery]);
@@ -120,16 +122,26 @@ export const SwapDataView = () => {
 
           <div className="flex max-h-[400px]  overflow-scroll gap-2 w-full py-2 flex-col">
             {filteredTrx.map((e) => {
+              const route = e.route;
               const fromChain = chains.chains.find(
-                (c) => c.id === e.fromChainId,
+                (c) => c.id === route?.fromChainId,
               );
-              const toChain = chains.chains.find((c) => c.id === e.toChainId);
-              const fromToken = e.fromToken;
-              const toToken = e.toToken;
+              const toChain = chains.chains.find(
+                (c) => c.id === route?.toChainId,
+              );
+              const fromToken = route?.fromToken;
+              const toToken = route?.toToken;
+              const fromAddress = route?.fromAddress;
+              const fromAmount = route?.fromAmount;
+              const toAddress = route?.toAddress;
+              const toAmount = route?.toAmount;
+
               return (
                 <div className="border border-dashed w-full flex flex-col  rounded-2xl">
                   <ListTitle
-                    onClick={() => openScan(e.fromAddress ?? fromToken.address)}
+                    onClick={() =>
+                      openScan(fromAddress ?? fromToken?.address ?? "")
+                    }
                     className="pb-0 hover:opacity-50 cursor-pointer transition-all rounded-2xl "
                     leading={
                       <CryptoPicture
@@ -139,16 +151,16 @@ export const SwapDataView = () => {
                       />
                     }
                     title={
-                      <div className={"font-bold"}> From {fromToken.name}</div>
+                      <div className={"font-bold"}> From {fromToken?.name}</div>
                     }
-                    subTitle={<div className="truncate ">{e.fromAddress}</div>}
+                    subTitle={<div className="truncate ">{fromAddress}</div>}
                     leftStyle={{
                       maxWidth: "40%",
                       justifyContent: "start",
                     }}
                     actions={[
                       <div className="truncate max-w-[50%]">
-                        {Number(e.fromAmount) / 1e18}
+                        {Number(fromAmount) / 1e18}
                       </div>,
                     ]}
                   />
@@ -158,16 +170,18 @@ export const SwapDataView = () => {
                     }
                   ></div>
                   <ListTitle
-                    onClick={() => openScan(e.toAddress ?? toToken.address)}
+                    onClick={() =>
+                      openScan(toAddress ?? toToken?.address ?? "")
+                    }
                     leftStyle={{
                       maxWidth: "40%",
                       justifyContent: "start",
                     }}
                     className="pt-0 hover:opacity-50 cursor-pointer transition-all rounded-2xl"
-                    subTitle={<div className="truncate ">{e.toAddress}</div>}
+                    subTitle={<div className="truncate ">{toAddress}</div>}
                     actions={[
                       <div className="truncate max-w-[50%]">
-                        {Number(e.toAmount) / 1e18}
+                        {Number(toAmount) / 1e18}
                       </div>,
                     ]}
                     leading={
@@ -178,7 +192,7 @@ export const SwapDataView = () => {
                       />
                     }
                     title={
-                      <div className={"font-bold"}> To {toToken.name}</div>
+                      <div className={"font-bold"}> To {toToken?.name}</div>
                     }
                   />
                 </div>

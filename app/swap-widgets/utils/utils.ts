@@ -75,4 +75,18 @@ export function copy(value: string) {
   }
 }
 
+export function formatError(error: any) {
+  let errorMessage = "";
+  if (typeof error == "object" && JSON.stringify(error)) {
+    errorMessage = JSON.stringify(error);
+  } else {
+    if (typeof error === "string") {
+      errorMessage = error;
+    } else {
+      errorMessage = (error as any).toString();
+    }
+  }
+  return errorMessage;
+}
+
 export const ZeroAddress = "0x0000000000000000000000000000000000000000";

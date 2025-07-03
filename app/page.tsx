@@ -45,7 +45,7 @@ export default function Home() {
   }
 
   createConfig({
-    integrator: "donadev",
+    integrator: "vswap.io",
     providers: [EVM({})],
     rpcUrls: RpcUrls,
     apiUrl: "/api/lifi-proxy",
