@@ -1,6 +1,6 @@
 "use client";
 import { v4 as uuid } from "uuid";
-import { AlertCircleIcon, ArrowDown } from "lucide-react";
+import { AlertCircleIcon, ArrowDown, EyeClosed, Trash2 } from "lucide-react";
 import { CryptoAvatar } from "../components/ui/crypto-avatar";
 import {
   SwapInputCard,
@@ -19,7 +19,7 @@ import { GasCost, Route, TokenAmount } from "@lifi/widget";
 import { formatUnits } from "ethers";
 import { AnimatePresence, motion } from "framer-motion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { TranslateY } from "./ui/animated-components";
+import { Blur, TranslateY } from "./ui/animated-components";
 import { toast } from "sonner";
 import { FaGasPump } from "react-icons/fa6";
 import { MdAccessTimeFilled } from "react-icons/md";
@@ -33,6 +33,9 @@ import { useOnReviewSwap } from "../hooks/on-review-swap";
 import { Navigate } from "../routes/routes-utils";
 import { useModal } from "../hooks/modal-context";
 import { useOnStartSwap } from "../hooks/on-start-swap";
+import { IoIosArrowForward } from "react-icons/io";
+import { IoEyeOffOutline } from "react-icons/io5";
+import { SwapHistoryCard } from "./swap-history-card";
 
 export const MainContent = ({ bridge = false }: { bridge?: boolean }) => {
   const orderManager = useOrderManager();
@@ -53,6 +56,7 @@ export const MainContent = ({ bridge = false }: { bridge?: boolean }) => {
   const [routes, setRoutes] = React.useState<Route[]>([]);
   const onReviewSwap = useOnReviewSwap();
   const onStartSwap = useOnStartSwap();
+  const [showOrderHistory, setShowOrderHistory] = React.useState(true);
   const isFromTokenAvailable = !!orderManager.fromToken;
   const isFromChainAvailable = !!orderManager.fromChain;
   const isToTokenAvailable = !!orderManager.toToken;
@@ -172,6 +176,22 @@ export const MainContent = ({ bridge = false }: { bridge?: boolean }) => {
   return (
     <div className="flex flex-col gap-3">
       <div className="relative flex  w-full justify-center flex-col gap-2">
+        <TranslateY
+          condition={
+            showOrderHistory && orderManager.swapStateHistory.length > 0
+          }
+        >
+          <div>
+            {orderManager.swapStateHistory.map((e) => {
+              return (
+                <SwapHistoryCard
+                  order={e}
+                  onHide={() => setShowOrderHistory(false)}
+                />
+              );
+            })}
+          </div>
+        </TranslateY>
         <a href={SwapRoutes.selectChainFrom}>
           <SwapInputCard className="cursor-pointer bg-hover hover:bg-[var(--card-hover-color)] ">
             <SwapInputTitle>From</SwapInputTitle>

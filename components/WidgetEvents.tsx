@@ -21,8 +21,6 @@ export const WidgetEvents = () => {
     const onRouteExecutionCompleted = async (_route: Route) => {
       console.log("onRouteExecutionCompleted fired.", _route);
       try {
-        const result = await SaveTransaction(_route);
-        console.log(result);
       } catch (error) {
         console.log(error);
       }

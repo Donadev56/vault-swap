@@ -9,6 +9,7 @@ body {
   height: 100%;
   overscroll-behavior: none; /* Prevent bounce & pull-to-refresh */
   font-family: var(--font-inter-sans);
+  scroll-behavior: smooth;
 }
 
 @theme inline {
@@ -206,4 +207,53 @@ body {
 
 .scale-active:hover {
   transform: scale(0.95);
+}
+
+.loader-t {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
+}
+.loader-t::before,
+.loader-t::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid var(--foreground);
+  animation: prixClipFix 2s linear infinite;
+}
+.loader-t::after {
+  inset: 8px;
+  transform: rotate3d(90, 90, 0, 180deg);
+  border-color: #ff00d4;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  75%,
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+}
+
+.b-none {
+  border: none;
 }

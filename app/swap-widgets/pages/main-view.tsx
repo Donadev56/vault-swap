@@ -3,22 +3,15 @@ import { Card } from "../../../components/ui/card";
 import { SwapRoutes } from "../routes/routes";
 import {
   ConnectWalletButtonHeader,
-  ConnectButton,
   IconButton,
 } from "../components/ui/buttons";
 import { Settings2 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { MainActionButton } from "../components/ui/main-action-button";
 import React from "react";
-import { useCustomLifiConfig } from "@/hooks/useCustomLifiConfig";
-import WalletIcon from "@mui/icons-material/Wallet";
 import { MainContent } from "../components/main-content";
 import { useOrderManager } from "../hooks/order-manager";
 import { motion } from "framer-motion";
-type MainComponentProps = {
-  useExternalWallet?: boolean;
-};
 
 export const MainSwapView = () => {
   const orderManager = useOrderManager();
@@ -63,8 +56,8 @@ export const MainSwapView = () => {
                 return (
                   <TabsTrigger
                     onClick={e.onClick}
-                    style={{ height: 40 }}
-                    className="shadow-none data-[state=active]:shadow-none"
+                    style={{ height: 40, border: "none" }}
+                    className="shadow-none b-none  border-0  data-[state=active]:shadow-none"
                     value={e.value}
                   >
                     {e.name}

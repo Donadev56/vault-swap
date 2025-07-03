@@ -1,3 +1,4 @@
+"use client";
 import ThemeToggle from "./ui/theme-toogle";
 
 import { StHeader } from "./ui/st-header";
@@ -41,6 +42,12 @@ export const TransactionView = () => {
 
   const isInit = React.useRef(false);
   const config = useCustomLifiConfig();
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.scrollTo(0, 0);
+    }
+  }, []);
 
   const generateRoutes = async () => {
     try {

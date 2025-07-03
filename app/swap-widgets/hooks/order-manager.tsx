@@ -40,9 +40,10 @@ export type OrderStep = {
   id: string;
   route?: Route;
   hash?: string;
+  completedTime: number;
 };
 
-interface OrderManagerContextType {
+export interface OrderManagerContextType {
   orderType: "swap" | "cross";
   amount: string;
   setAmount: (value: string) => void;
@@ -75,8 +76,13 @@ interface OrderManagerContextType {
   createOrder: () => void;
   cleanOrder: () => void;
   lastTransactionHash?: string;
+  reCreateOrder(targetState: OrderManagerContextType): void;
+  swapStateHistory: OrderManagerContextType[];
+  deleteSwapState(id: string): void;
 }
 const initialState: OrderManagerContextType = {
+  deleteSwapState: () => {},
+  swapStateHistory: {} as any,
   amount: "",
   setAmount: () => {},
   orderType: "swap",
@@ -109,6 +115,7 @@ const initialState: OrderManagerContextType = {
   generateSteps: async () => {},
   createOrder: () => {},
   cleanOrder: () => {},
+  reCreateOrder: () => {},
 };
 const OrderManagerContext =
   createContext<OrderManagerContextType>(initialState);
@@ -132,10 +139,20 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
   const [routeLoading, setRouteLoading] = useState(false);
   const [trGeneratorState, setTrGeneratorState] =
     useState<TrnasactionHandlertype>();
+  const [swapStateHistory, setSwapStateHistory] = useState<
+    OrderManagerContextType[]
+  >([]);
+
   const [trExeState, setTrExeState] = useState<
     TrnasactionHandlertype | undefined
   >();
   const [lastTransactionHash, setlastTransactionHash] = useState("");
+  const statekey = "vault-swap-app-state";
+  console.log("Swap state :", swapStateHistory);
+
+  useEffect(() => {
+    setSwapStateHistory(getSwapStateList());
+  }, []);
 
   function setOrderRoute(route: any) {
     setRoute(route);
@@ -317,6 +334,7 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
                 id: v4(),
                 status: Status.Pending,
                 route,
+                completedTime: 0,
               };
               console.log(newOrderStep);
               generatedSteps.push(newOrderStep);
@@ -335,6 +353,7 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
           transactionData: request,
           id: v4(),
           route: route,
+          completedTime: 0,
         };
 
         generatedSteps.push(newOrderStep);
@@ -385,6 +404,7 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
       });
 
       console.log({ targetSteps });
+      saveSwapState(targetSteps);
 
       if (targetSteps.length == 0) {
         throw Error("No Step Generated\n Try Again");
@@ -435,11 +455,8 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
             throw Error("Execution failed for step :" + eachStep.id);
           } else {
             if (i === targetSteps.length - 1) {
-              try {
-                SaveTransaction({ ...eachStep, hash: hash });
-              } catch (error) {
-                console.error(error);
-              }
+              deleteSwapState(orderId);
+              saveTransaction(eachStep, hash);
             }
             setlastTransactionHash(hash);
             console.log("transaction executed :", eachStep.id);
@@ -467,7 +484,22 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
     }
   }
 
+  async function saveTransaction(step: OrderStep, hash: string) {
+    try {
+      await SaveTransaction({
+        ...step,
+        hash: hash,
+        completedTime: Number((Date.now() / 1000).toFixed(0)),
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const state: OrderManagerContextType = {
+    deleteSwapState,
+    swapStateHistory,
+    reCreateOrder,
     lastTransactionHash,
     cleanOrder,
     createOrder,
@@ -502,6 +534,60 @@ export const OrderManagerProvider: React.FC<{ children: ReactNode }> = ({
     fetchRoutes,
   };
 
+  function saveSwapState(steps: OrderStep[]) {
+    try {
+      setOrderSteps((prev) => {
+        steps = [...prev];
+        return steps;
+      });
+      const appState = [{ ...state, orderSteps: steps }];
+      setSwapStateHistory(appState);
+      if (localStorage !== undefined) {
+        localStorage.setItem(statekey, JSON.stringify(appState));
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  function getSwapStateList(): OrderManagerContextType[] {
+    try {
+      if (localStorage !== undefined) {
+        return JSON.parse(localStorage.getItem(statekey) || "[]") || [];
+      }
+      return [];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+  function deleteSwapState(id: string) {
+    try {
+      const states = getSwapStateList();
+      if (states.length === 0) {
+        return;
+      }
+      const newStates = states.filter(
+        (e) =>
+          e.orderId?.trim().toLocaleLowerCase() !== id.trim().toLowerCase(),
+      );
+      setSwapStateHistory(newStates);
+      localStorage.setItem(statekey, JSON.stringify(newStates));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  function reCreateOrder(targetState: OrderManagerContextType) {
+    setRoute(targetState.route);
+    setAmount(targetState.amount);
+    setDestination(targetState.destination);
+    setOrderId(targetState.orderId);
+    setFromChain(targetState.fromChain);
+    setToChain(targetState.toChain);
+    setOrderType(targetState.orderType);
+    setToToken(targetState.toToken);
+    setFromToken(targetState.fromToken);
+  }
   return (
     <OrderManagerContext.Provider value={state}>
       {children}
